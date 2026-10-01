@@ -1,0 +1,9 @@
+Session 6: Build Something, and the Critic in the Room
+
+Go-deeper links from the takeaway guide:
+https://simonwillison.net
+https://www.anthropic.com/engineering
+https://www.oneusefulthing.org
+
+Ready-made materials (plain text):
+Ready-made materialsUse these when nobody has their own. Everything here is public or was written for this course.Sample paragraph for the four movesWritten for this course, deliberately hedged and contestable. Export controls on advanced chips will likely slow China's frontier AI development for several years. Chinese labs currently depend on Nvidia hardware for large training runs, and domestic alternatives appear to lag by at least a generation. Although smuggling and cloud access may blunt the effect somewhat, it seems unlikely that these channels can substitute at scale. The controls therefore probably buy the United States meaningful lead time, which policymakers should use to build governance capacity. Some analysts argue the controls accelerate Chinese self-sufficiency, but this concern may be overstated given the difficulty of replicating the semiconductor supply chain.Reviewer to nameReview this as a RAND quality assurance reviewer would, then as a skeptical House Appropriations staffer would. Quote the sentence you are criticizing each time.Default build for anyone who arrives empty-handedThe Session 5 skill doc plus the Session 3 script, turned into a repeatable workflow on the SIPRI data: load, count, chart, one paragraph of findings with page cites. Small enough to finish, real enough to critique.

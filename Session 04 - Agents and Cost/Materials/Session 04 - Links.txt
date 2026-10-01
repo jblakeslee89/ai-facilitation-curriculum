@@ -1,0 +1,11 @@
+Session 4: Agents, Subagents, and Cost
+
+Go-deeper links from the takeaway guide:
+https://cognition.com/blog/dont-build-multi-agents
+https://simonwillison.net
+https://www.anthropic.com/engineering/multi-agent-research-system
+https://www.anthropic.com/research/building-effective-agents
+https://www.langchain.com/blog/how-and-when-to-build-multi-agent-systems
+
+Ready-made materials (plain text):
+Ready-made materialsUse these when nobody has their own. Everything here is public or was written for this course.The three documentsThe last three annual editions of the Department of Defense report to Congress on Military and Security Developments Involving the People's Republic of China (public, on defense.gov). Same topic, same structure, changing numbers.The agentic taskRead these three reports. Extract every quantitative claim about the size of the PLA Navy into a table: claim, report year, page cite. Flag every place the editions disagree with each other. The implicit decision to catch: what counts as a ship.Manual version for tools without agentsAssign one report per person, same table, then merge. The merge is where the parallel-reads lesson lands.Question to run at two settingsA mid-sized city is considering a 1% payroll tax to fund a homelessness program. What are the three strongest objections an economist would raise, and what evidence would settle each? Cheapest model, then highest effort. Time both.Five tasks for the cost estimation game, with the tier to argue toward(1) Turn this bulleted list into a table: A. (2) Find the five most-cited papers on secondary sanctions since 2018: B, since you will verify every one. (3) Draft the limitations section of a survey-based study: C. (4) Explain fixed effects versus random effects in two sentences: A, or B if you are going to teach it. (5) Read these three DoD reports and tell me where they disagree: B and agentic; the disagreements need checking. Expect a fight over 4 and 5.

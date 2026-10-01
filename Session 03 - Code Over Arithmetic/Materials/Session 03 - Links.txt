@@ -1,0 +1,8 @@
+Session 3: Data Work, and Deterministic Code Over Model Arithmetic
+
+Go-deeper links from the takeaway guide:
+https://simonwillison.net
+https://www.oneusefulthing.org
+
+Ready-made materials (plain text):
+Ready-made materialsUse these when nobody has their own. Everything here is public or was written for this course.The datasetSIPRI Military Expenditure Database (sipri.org/databases/milex), the share-of-GDP sheet: one row per country, one column per year. Real, free, and policy-relevant. Fallback if SIPRI is down: the World Bank indicator MS.MIL.XPND.GD.ZS as CSV.The counting questionHow many countries spent more than 2% of GDP on the military in the latest year? Ask in prose three times, then Write and run code that counts them, and print the list. Then a chart: the fifteen highest shares as a bar chart.For anyone without their own dataSame file, different question: median share by region, or which countries crossed 2% in the last decade.

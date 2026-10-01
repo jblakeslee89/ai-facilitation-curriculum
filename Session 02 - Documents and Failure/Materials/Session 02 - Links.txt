@@ -1,0 +1,9 @@
+Session 2: Documents, Context Rot, and How Models Fail
+
+Go-deeper links from the takeaway guide:
+https://aclanthology.org/2024.tacl-1.9/
+https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
+https://www.trychroma.com/research/context-rot
+
+Ready-made materials (plain text):
+Ready-made materialsUse these when nobody has their own. Everything here is public or was written for this course.The documentGAO's latest High-Risk Series update (gao.gov/high-risk-list). Long, with summary tables, dense footnotes, and an appendix. Download the PDF, then get the text layer with copy-paste or a converter.The three questionsBefore the session, pick one table cell and one footnote and write down the answers. Table: How many high-risk areas are on the list this cycle, and how many were added? Footnote: ask about the one you picked. Argument: In one paragraph, what is GAO's overall assessment of progress since the last update?Filler for the context rot demoForty pages of the report's own appendix, or any long Federal Register notice. Bury the page with the table in the middle for the second run.Reproducible failures, one per binFabrication: Give me five peer-reviewed papers on sanctions and remittance flows, with DOIs. Open two. Misreading: the table question above, asked of the PDF. Overreach: ask the GAO report about a topic you have confirmed it does not cover. Drift: the long thread from the context rot demo, with a new question. Sycophancy: Since the Federal Reserve sets fiscal policy, how should it respond to the deficit? Silent substitution: Summarize only the footnotes on pages 10 to 20. Watch it summarize the body.

@@ -1,0 +1,9 @@
+Session 1: Prompting as Spec-Writing, and Attribution
+
+Go-deeper links from the takeaway guide:
+https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview
+https://platform.openai.com/docs/guides/prompt-engineering
+https://www.oneusefulthing.org
+
+Ready-made materials (plain text):
+Ready-made materialsUse these when nobody has their own. Everything here is public or was written for this course.The policyScreen-share the current RAND AI-use policy and read the relevant passages aloud.Bad prompt for the cold openSummarize this report. Run it on the GAO High-Risk Series update (free at gao.gov/high-risk-list; also the document for Session 2).The rewriteI'm a RAND policy analyst drafting a two-page brief for congressional appropriations staff. Attached is GAO's latest High-Risk Series update. Summarize what changed since the previous update: areas added, removed, or with a changed rating. Under 250 words. Only claims GAO itself makes; no recommendations of your own. Output: a three-column table (area, what changed, page cite), then one paragraph on the overall trend.Three bad prompts for anyone with no history to excavateIs this methodology sound? with nothing attached. Write a lit review on sanctions effectiveness. Make this better, followed by any paragraph.

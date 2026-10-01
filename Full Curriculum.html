@@ -1,0 +1,568 @@
+<title>RAND AI Facilitation Curriculum</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400&display=swap">
+<style>
+:root {
+  --ink: #161400;
+  --ink-2: #2D2B19;
+  --paper: #FFFFFF;
+  --paper-2: #ECEBE7;
+  --accent: #751DDB;
+  --accent-dark: #5B17AA;
+  --tint: #E3E3F7;
+  --tint-2: #D6BBF4;
+  --red: #BB352C;
+  --mute: #5C5B4D;
+  --rule: #B9B9B3;
+  --font-head: 'ABC Monument Grotesk', 'Monument Grotesk', 'Inter', Helvetica, Arial, sans-serif;
+  --font-body: 'Suisse Works', 'Source Serif 4', 'Times New Roman', Georgia, serif;
+  --font-mono: 'Fraktion Mono', 'DM Mono', 'Lucida Console', Monaco, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #F2F0E8;
+    --ink-2: #DAD7CB;
+    --paper: #1B1910;
+    --paper-2: #26241B;
+    --accent: #B08AF0;
+    --accent-dark: #C9ADF7;
+    --tint: #2A2540;
+    --tint-2: #3A2F5A;
+    --red: #E5786F;
+    --mute: #A8A69A;
+    --rule: #4A4838;
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #F2F0E8;
+  --ink-2: #DAD7CB;
+  --paper: #1B1910;
+  --paper-2: #26241B;
+  --accent: #B08AF0;
+  --accent-dark: #C9ADF7;
+  --tint: #2A2540;
+  --tint-2: #3A2F5A;
+  --red: #E5786F;
+  --mute: #A8A69A;
+  --rule: #4A4838;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink-2);
+  font: 400 17px/1.55 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: var(--accent); text-decoration: underline; text-decoration-color: var(--tint-2); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+a:hover { color: var(--accent-dark); text-decoration-color: currentColor; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+strong { font-weight: 600; color: var(--ink); }
+em { font-style: italic; }
+p { margin: 0 0 0.9rem; max-width: 66ch; }
+ul, ol { margin: 0 0 1rem; padding-left: 1.2rem; max-width: 66ch; }
+li { margin: 0 0 0.45rem; }
+li::marker { color: var(--accent); }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font-head); font-weight: 600; letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
+
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); }
+
+/* ---------- furniture ---------- */
+.hairline { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+.tag {
+  display: inline-flex; align-items: center; gap: 0.5em;
+  font: 500 11px/1 var(--font-head); letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent);
+}
+.tag::after { content: ""; display: inline-block; width: 1.4rem; border-top: 2px solid var(--accent); }
+.tag--red { color: var(--red); }
+.tag--red::after { border-top-color: var(--red); }
+.sigil { display: none; }
+
+/* ---------- cover ---------- */
+.cover { padding: 1.6rem 0 2.6rem; }
+.cover .hairline { margin-bottom: 2.6rem; }
+.cover-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.cover-top .org { font: 600 13px/1 var(--font-head); letter-spacing: 0.02em; color: var(--ink); }
+.brand { display: flex; align-items: center; gap: 0.9rem; }
+.brand svg { width: 56px; height: 56px; }
+.brand .org { display: block; }
+.brand .sub { display: block; font: 400 13px/1.3 var(--font-body); color: var(--mute); margin-top: 0.15rem; }
+.cover h1 {
+  font-size: clamp(42px, 6.6vw, 84px); line-height: 1.0; letter-spacing: -0.03em;
+  max-width: 16ch;
+}
+.cover .dek {
+  margin: 1.5rem 0 0; max-width: 52ch;
+  font-size: clamp(18px, 2vw, 22px); line-height: 1.4; color: var(--ink-2);
+}
+.cover .yes { font: 500 14px/1 var(--font-head); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 1.4rem 0 0; }
+.meta-band { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin: 3rem 0 0; }
+.meta-band div { border-top: 1px solid var(--rule); padding-top: 0.55rem; font: 500 12.5px/1.4 var(--font-head); color: var(--ink); }
+.meta-band .chev { color: var(--accent); margin-right: 0.35em; }
+
+.strip {
+  display: grid; grid-template-columns: repeat(10, 1fr);
+  margin: 2.6rem 0 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+}
+.strip a {
+  display: flex; flex-direction: column; gap: 0.55rem; padding: 0.9rem 0.65rem 1rem;
+  text-decoration: none; min-height: 7.2rem; border-right: 1px solid var(--rule); color: var(--ink);
+  font: 500 12.5px/1.3 var(--font-head);
+}
+.strip a:last-child { border-right: 0; }
+.strip a:hover { background: var(--tint); color: var(--accent-dark); }
+.strip .n { font: 600 28px/1 var(--font-head); font-variant-numeric: tabular-nums; color: var(--accent); letter-spacing: -0.02em; }
+
+/* ---------- sticky bar ---------- */
+.bar { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: 1px solid var(--rule); }
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 48px; flex-wrap: wrap; }
+.bar nav { display: flex; gap: 0; }
+.bar nav a {
+  font: 500 12.5px/1 var(--font-head); font-variant-numeric: tabular-nums; text-decoration: none;
+  padding: 1rem 0.6rem; color: var(--ink); border-bottom: 3px solid transparent; margin-bottom: -1px;
+}
+.bar nav a.is-active { border-bottom-color: var(--accent); color: var(--accent); }
+.bar nav a:hover { color: var(--accent-dark); }
+.views { display: flex; gap: 0; }
+.views button {
+  appearance: none; background: none; border: 1px solid var(--ink); color: var(--ink);
+  font: 500 11px/1 var(--font-head); letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.6rem 0.85rem; cursor: pointer; margin-left: -1px; border-radius: 0;
+}
+.views button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #FFFFFF; position: relative; z-index: 1; }
+.views button:hover:not([aria-pressed="true"]) { background: var(--tint); }
+
+/* ---------- front matter ---------- */
+.front { padding: 3rem 0 1rem; }
+.front-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 1.4rem; }
+.block { margin-bottom: 2.2rem; }
+.block > .tag { margin-bottom: 0.8rem; }
+
+.track { display: flex; height: 34px; border: 1px solid var(--rule); margin: 0.8rem 0 0.4rem; max-width: 640px; }
+.track span {
+  display: flex; align-items: center; padding: 0 0.6rem; white-space: nowrap; overflow: hidden;
+  font: 500 10.5px/1 var(--font-head); letter-spacing: 0.08em; text-transform: uppercase;
+  border-right: 1px solid var(--rule); color: var(--ink);
+}
+.track span:last-of-type { border-right: 0; }
+.track .t-open { background: var(--tint); }
+.track .t-core { background: var(--accent); color: #FFFFFF; }
+.track .t-debrief { background: var(--tint); }
+.track .t-hw { background: var(--paper-2); }
+.track .t-slack { background: transparent; flex: 1; border-right: 0; }
+.track-key { font: 400 13px/1.4 var(--font-body); color: var(--mute); max-width: 640px; margin: 0 0 1.2rem; }
+
+.struct { width: 100%; max-width: 640px; border-collapse: collapse; font-size: 15px; }
+.struct th { text-align: left; font: 500 10.5px/1.2 var(--font-head); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); padding: 0 0.8rem 0.5rem 0; border-bottom: 2px solid var(--ink); }
+.struct td { vertical-align: top; padding: 0.6rem 0.8rem 0.6rem 0; border-bottom: 1px solid var(--rule); }
+.struct td:first-child { font-family: var(--font-head); font-weight: 500; color: var(--ink); }
+.struct td:nth-child(2) { white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+.ph {
+  display: inline-block; padding: 0.05em 0.45em; border: 1px dashed var(--red); color: var(--red);
+  font: 500 11px/1.7 var(--font-head); letter-spacing: 0.06em; text-transform: uppercase; vertical-align: 0.1em;
+}
+
+/* ---------- sessions ---------- */
+.session { padding: 3.5rem 0 1rem; scroll-margin-top: 60px; }
+.session > .wrap > .hairline { margin-bottom: 1.4rem; border-top: 2px solid var(--ink); }
+.s-head { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end; margin-bottom: 2rem; }
+.s-head .eyebrow { display: flex; align-items: baseline; gap: 0.7rem; margin-bottom: 0.6rem; }
+.s-head .num { font: 600 40px/0.9 var(--font-head); font-variant-numeric: tabular-nums; color: var(--accent); letter-spacing: -0.02em; }
+.s-head h2 { font-size: clamp(28px, 3.6vw, 42px); line-height: 1.05; max-width: 24ch; }
+.s-head .mini { display: flex; flex-direction: column; align-items: flex-end; gap: 0.4rem; }
+.mini .track { height: 22px; width: 240px; margin: 0; }
+.mini .track span { padding: 0; justify-content: center; font-size: 10px; letter-spacing: 0.04em; }
+.mini small { font: 500 11px/1 var(--font-head); color: var(--mute); letter-spacing: 0.06em; text-transform: uppercase; }
+
+.gw { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 2.4rem; }
+.gw p { font-size: 18px; line-height: 1.5; }
+.gw .tag { margin-bottom: 0.6rem; }
+
+.plan { margin-bottom: 3rem; }
+.plan-title { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.2rem; }
+.plan-title h3 { font-size: 20px; }
+.plan-title small { font: 500 11px/1 var(--font-head); color: var(--mute); letter-spacing: 0.08em; text-transform: uppercase; }
+.tl { display: grid; grid-template-columns: 5.2rem 1fr; border-top: 1px solid var(--rule); }
+.tl > div { padding: 1rem 0; border-bottom: 1px solid var(--rule); }
+.tl .min { font: 600 24px/1 var(--font-head); font-variant-numeric: tabular-nums; color: var(--accent); padding-top: 1.05rem; letter-spacing: -0.02em; }
+.tl .min small { display: block; font: 500 10px/1.4 var(--font-head); letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); margin-top: 0.3rem; }
+.tl .lab { font: 500 11px/1 var(--font-head); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.55rem; }
+.tl p:last-child, .tl ol:last-child { margin-bottom: 0; }
+.steps { list-style: none; padding: 0; margin: 0; counter-reset: step; max-width: 72ch; }
+.steps li { display: grid; grid-template-columns: 1.7rem 1fr; gap: 0.6rem; margin: 0 0 0.9rem; counter-increment: step; }
+.steps li::before { content: counter(step); font: 600 17px/1.5 var(--font-head); color: var(--accent); font-variant-numeric: tabular-nums; }
+.steps .st { font-family: var(--font-head); font-weight: 600; color: var(--ink); font-size: 16px; }
+.steps .st .m { font-weight: 500; color: var(--mute); font-variant-numeric: tabular-nums; margin-left: 0.35em; }
+.steps p { margin: 0; }
+.tl .cut { color: var(--mute); }
+
+.watch { display: grid; grid-template-columns: 9.5rem 1fr; gap: 1.5rem; padding: 1.2rem 0 1.4rem; border-top: 2px solid var(--red); border-bottom: 1px solid var(--rule); margin-top: 1.6rem; }
+.watch ul { margin: 0; }
+.watch li::marker { color: var(--red); }
+
+/* ---------- handout ---------- */
+.handout { border: 1px solid var(--rule); border-top: 6px solid var(--accent); padding: 1.8rem clamp(1.2rem, 3vw, 2.6rem) 2.2rem; margin: 0 0 1rem; background: var(--paper); }
+.h-top { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--rule); padding-bottom: 0.6rem; margin-bottom: 1.4rem; }
+.h-top .tag::after { width: 3rem; }
+.h-top .hn { font: 500 11px/1 var(--font-head); letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); }
+.handout h3 { font-size: 26px; margin-bottom: 0.9rem; }
+.idea { font-size: 21px; line-height: 1.4; max-width: 56ch; margin: 0 0 1.8rem; padding-left: 1rem; border-left: 3px solid var(--accent); color: var(--ink); }
+.idea .tag { display: block; margin-bottom: 0.35rem; }
+.h-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.2rem; }
+.hs { margin-bottom: 1.5rem; }
+.hs > .tag { margin-bottom: 0.55rem; }
+.hs p, .hs ul, .hs ol { font-size: 15.5px; line-height: 1.5; }
+.hs ul, .hs ol { padding-left: 1.1rem; }
+.hs p:last-child, .hs ul:last-child, .hs ol:last-child { margin-bottom: 0; }
+.hs.pit li::marker { color: var(--red); }
+.hs.deep a { word-break: break-word; }
+.hs.deep li { font-size: 14px; }
+
+.grid { width: 100%; border-collapse: collapse; font-size: 14.5px; line-height: 1.4; margin: 0 0 0.4rem; }
+.grid th { text-align: left; font: 500 10.5px/1.2 var(--font-head); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); padding: 0 0.8rem 0.5rem 0; border-bottom: 2px solid var(--ink); vertical-align: bottom; }
+.grid td { vertical-align: top; padding: 0.55rem 0.8rem 0.55rem 0; border-bottom: 1px solid var(--rule); }
+.grid td:first-child { font-family: var(--font-head); font-weight: 500; font-size: 13.5px; color: var(--ink); white-space: nowrap; }
+.grid td:last-child, .grid th:last-child { padding-right: 0; }
+.tbl { overflow-x: auto; }
+
+.mono { font: 400 0.86em/1.5 var(--font-mono); background: var(--paper-2); padding: 0.1em 0.4em; color: var(--ink); }
+.grid .mono { display: inline-block; }
+
+.pips { position: fixed; right: 20px; bottom: 20px; display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; z-index: 20; }
+.pips li { width: 10px; height: 10px; background: var(--accent); opacity: 0.22; transition: opacity 200ms ease; }
+.pips li.is-active { opacity: 1; }
+
+body.v-plans .handout { display: none; }
+body.v-handouts .plan, body.v-handouts .gw, body.v-handouts .front, body.v-handouts .s-head .mini { display: none; }
+body.v-handouts .s-head { margin-bottom: 1rem; }
+
+.end { padding: 3rem 0 4rem; }
+.end .hairline { margin-bottom: 1rem; }
+.end p { font-size: 14px; color: var(--mute); }
+
+@media (max-width: 900px) {
+  .front-grid, .gw, .h-grid { grid-template-columns: 1fr; }
+  .strip { grid-template-columns: repeat(5, 1fr); }
+  .strip a:nth-child(5) { border-right: 0; }
+  .strip a:nth-child(-n+5) { border-bottom: 1px solid var(--rule); }
+  .s-head { grid-template-columns: 1fr; }
+  .s-head .mini { align-items: flex-start; }
+  .meta-band { grid-template-columns: 1fr 1fr; }
+  .watch { grid-template-columns: 1fr; gap: 0.6rem; }
+  .bar nav { overflow-x: auto; max-width: 100%; }
+}
+@media (max-width: 560px) {
+  .strip { grid-template-columns: repeat(2, 1fr); }
+  .strip a { border-bottom: 1px solid var(--rule); }
+  .strip a:nth-child(odd) { border-right: 1px solid var(--rule); }
+  .strip a:nth-child(even) { border-right: 0; }
+  .tl { grid-template-columns: 3.6rem 1fr; }
+  .pips { display: none; }
+}
+
+@media print {
+  :root { --ink: #161400; --ink-2: #2D2B19; --paper: #fff; --paper-2: #ECEBE7; --accent: #751DDB; --accent-dark: #5B17AA; --tint: #E3E3F7; --tint-2: #D6BBF4; --red: #BB352C; --rule: #B9B9B3; --mute: #5C5B4D; }
+  body { font-size: 12px; }
+  .bar, .pips, .strip, .end { display: none !important; }
+  .wrap { max-width: none; padding: 0; }
+  .session { padding-top: 0; break-before: page; }
+  .handout { break-before: page; border: 0; border-top: 6px solid var(--accent); padding: 1rem 0 0; }
+  .tl > div { break-inside: avoid; }
+  a { text-decoration: none; }
+}
+
+/* ready-made materials */
+.kit { background: var(--paper-2); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem 1.3rem; margin: 0 0 2.6rem; }
+.kit > .tag { margin-bottom: 0.4rem; }
+.kit-note { font-size: 13.5px; color: var(--mute); margin: 0 0 0.9rem; }
+.kit dl { display: grid; grid-template-columns: 11rem 1fr; gap: 0.7rem 1.4rem; margin: 0; max-width: 90ch; }
+.kit dt { font: 500 12px/1.4 var(--font-head); color: var(--ink); }
+.kit dd { margin: 0; font-size: 15px; line-height: 1.5; }
+.kit dd.kit-pre { grid-column: 1 / -1; }
+.kit pre { margin: 0; font: 400 12.5px/1.6 var(--font-mono); background: var(--paper); border: 1px solid var(--rule); padding: 0.8rem 1rem; white-space: pre-wrap; color: var(--ink); }
+.kit .mono { background: var(--paper); }
+body.v-handouts .kit { display: none; }
+@media (max-width: 700px) { .kit dl { grid-template-columns: 1fr; gap: 0.2rem 0; } .kit dt { margin-top: 0.6rem; } }
+
+/* restructure additions */
+.s-head .when { font: 500 12px/1 var(--font-head); color: var(--mute); letter-spacing: 0.02em; margin-left: 0.4rem; }
+.note { font-size: 13.5px; color: var(--mute); margin: 0 0 0.6rem; }
+.struct.sched td:nth-child(2) { white-space: nowrap; font-family: var(--font-head); font-weight: 500; color: var(--accent); }
+.struct.sched td:first-child { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.hs pre { margin: 0; font: 400 12.5px/1.6 var(--font-mono); background: var(--paper-2); border: 1px solid var(--rule); padding: 0.8rem 1rem; white-space: pre-wrap; }
+.hs .tbl + p { margin-top: 0.5rem; }
+</style>
+<header class="cover">
+  <div class="wrap">
+    <div class="cover-top">
+      <div class="brand"><svg viewBox="0 0 163.2 163.2" xmlns="http://www.w3.org/2000/svg" aria-label="RAND" role="img"><path fill="#751ddb" d="M120.6 0c-6.6 23-20.4 43.7-39.3 58.8C60.4 75.5 35.2 84.3 8.4 84.3c-2.7 0-5.5 0-8.4-.3v79.2h163.2V0h-42.6z"/><path fill="#fff" d="M82.9 106.4v33.9h3.7v-25.9l25.2 26.3h.7v-33.6h-3.7v25.4l-24.9-26.1z"/><path fill="#fff" fill-rule="evenodd" d="M125.8 140.3h6.1c5.2 0 9.2-.6 13.1-4.2 3.6-3.2 5.4-7.6 5.4-12.4 0-5-1.7-9.4-5.5-12.6-3.9-3.3-8-3.9-12.9-3.9h-6.2v33.1zm3.7-3.5v-26.3h2.7c3.9 0 7.2.5 10.3 3.2 2.8 2.5 4.3 6.1 4.3 10 0 3.7-1.4 7.2-4.1 9.7-3 2.8-6.4 3.4-10.4 3.4h-2.8z"/><path fill="#fff" fill-rule="evenodd" d="M67.3 130.8H53.1l-4 9.4H45l15-33.8h.7l14.6 33.9h-4.1l-3.9-9.5zm-1.5-3.4H54.6l5.7-13.3 5.5 13.3z"/><path fill="#fff" d="M21.6 125.8v14.5h-3.8v-33.2h7.5c2.8 0 5.8.1 8.2 1.7 2.5 1.7 3.8 4.6 3.8 7.6 0 2.7-1.2 5.4-3.2 7.1-1.4 1.2-3.2 1.7-4.9 2l10.4 14.7h-4.5l-12.4-17.9H26c4.1 0 7.6-1.2 7.6-6 0-5.4-4.3-5.8-8.7-5.8h-3.5l.2 15.3z"/><path fill="#751ddb" d="M79 56c18-14.4 31.2-34.1 37.8-56H0v80.3c2.9.3 5.7.3 8.4.3 25.9.1 50.3-8.5 70.6-24.6z"/><path fill="#fff" d="M81.3 58.8C100.2 43.7 114 23 120.6 0h-3.9C110.2 21.9 96.9 41.6 79 56 58.7 72.1 34.3 80.7 8.4 80.7c-2.7 0-5.5-.1-8.4-.3V84c3 .3 5.7.3 8.4.3 26.8 0 52-8.8 72.9-25.5z"/></svg><div><span class="org">RAND</span><span class="sub">AI Facilitation Group</span></div></div>
+      <span class="tag">Curriculum</span>
+    </div>
+    <hr class="hairline">
+    <h1>AI Facilitation Group Curriculum</h1>
+    <p class="dek">Six biweekly sessions from September to December, with a seventh slot in January for a topic the group picks. Each session has a facilitator plan followed by a one-page participant handout. The first five sessions are sequenced so that participants can use AI as a study aid for the qualifying exams in November.</p>
+    <p class="yes">Real work only.</p>
+    <div class="strip" aria-label="Sessions" style="grid-template-columns: repeat(7, 1fr)"><a href="#s1"><span class="n">1</span><span>Prompting and Attribution</span></a><a href="#s2"><span class="n">2</span><span>Documents and Failure</span></a><a href="#s3"><span class="n">3</span><span>Code Over Arithmetic</span></a><a href="#s4"><span class="n">4</span><span>Agents and Cost</span></a><a href="#s5"><span class="n">5</span><span>Skill Docs and Quals</span></a><a href="#s6"><span class="n">6</span><span>Build and Critique</span></a><a href="#s7"><span class="n">7</span><span>Group&#x27;s Pick</span></a></div>
+    <div class="meta-band">
+      <div><span class="chev">&#9656;</span>Scroll to read</div>
+      <div>Biweekly, Thursday and Friday</div>
+      <div>September 2026 to January 2027</div>
+      <div>6 sessions and one open slot</div>
+    </div>
+  </div>
+</header>
+<div class="bar"><div class="wrap">
+    <nav aria-label="Jump to session"><a href="#front">Setup</a><a href="#s1">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a><a href="#s5">5</a><a href="#s6">6</a><a href="#s7">7</a></nav>
+    <div class="views" role="group" aria-label="View">
+      <button type="button" data-view="all" aria-pressed="true">Everything</button>
+      <button type="button" data-view="plans" aria-pressed="false">Facilitator plans</button>
+      <button type="button" data-view="handouts" aria-pressed="false">Handouts</button>
+    </div></div></div>
+<section class="front" id="front"><div class="wrap"><hr class="hairline"><div class="front-grid"><div><div class="block"><span class="tag">Working assumptions</span><p class="note">Edit if wrong.</p><ul><li>90-minute sessions; each plan flags what to cut for 60.</li><li>Sessions are scheduled on Thursday and Friday pairs, every other week. A session that needs more room (the build session, especially) can use both days.</li><li>Participants have enterprise access to a frontier model with file upload, code execution, and a deep-research mode. Plans are written tool-agnostic; swap in the RAND-approved product.</li><li>Sessions run virtually. Everyone joins from a machine they can screen-share from, with one live project open (thesis chapter, RAND task, lit review, qual reading). Breakout rooms handle pair work; a shared doc or Miro board stands in for the whiteboard. Each plan carries ready-made materials for anyone who arrives without a project.</li><li>A shared running document ("the Playbook") captures what worked, what broke, and what the model lied about. By the last session it is the group's own RAND-specific reference.</li></ul></div><div class="block"><span class="tag">Facilitation notes</span><ul><li>Assign the cold-open demo at the <em>end</em> of the prior session, not the start of the current one.</li><li>When someone asks a question you don't know, put it to the room first, then to the model, then to the Playbook as an open item.</li><li>Keep a "Lies Log" section in the Playbook. Every confident, wrong model output goes in it with the prompt that produced it and its bin. This becomes the best teaching material you have.</li></ul></div><div class="block"><span class="tag">Changes from the first draft</span><p class="note">From reviewer notes of September 10.</p><ul><li>Sessions reordered so documents and code come before agents, and the foundation is in place before quals.</li><li>Attribution and disclosure (old Session 7) now sit in Session 1, since they are ground rules.</li><li>The failure taxonomy and pre-flight checklist (old Session 8) now live in Session 2's handout and in every debrief.</li><li>The editing passes (old Session 7) now sit in Handout 6, as a way to evaluate a build's output.</li><li>The critic moves (old Session 5) now run inside the build session as the critique format.</li><li>Tiering, effort, and cost (old Session 2) now pair with agents in Session 4.</li></ul>
+<p>---</p></div></div><div><div class="block"><span class="tag">Schedule</span><div class="tbl"><table class="struct sched"><thead><tr><th>Dates</th><th>Session</th><th>Topic</th></tr></thead><tbody><tr><td>Sep 17 &amp; 18</td><td>1</td><td>Prompting as Spec-Writing, and Attribution</td></tr><tr><td>Oct 1 &amp; 2</td><td>2</td><td>Documents, Context Rot, and How Models Fail</td></tr><tr><td>Oct 15 &amp; 16</td><td>3</td><td>Code Over Arithmetic</td></tr><tr><td>Oct 29 &amp; 30</td><td>4</td><td>Agents, Subagents, and Cost</td></tr><tr><td>Nov 12 &amp; 13</td><td>5</td><td>Skill Docs, with Quals in View</td></tr><tr><td>Nov 26 &amp; 27</td><td>No session</td><td>Quals and Thanksgiving</td></tr><tr><td>Dec 10 &amp; 11</td><td>6</td><td>Build Something, and the Critic in the Room</td></tr><tr><td>Dec 24 &amp; 25</td><td>No session</td><td>Holiday</td></tr><tr><td>Jan 7 &amp; 8</td><td>7</td><td>Topic the group picks</td></tr></tbody></table></div></div><div class="block"><span class="tag">Standing structure</span><div class="track" aria-hidden="true"><span class="t-open" style="flex-basis:11.1%">Open</span><span class="t-core" style="flex-basis:55.6%">Core</span><span class="t-debrief" style="flex-basis:13.3%">Debrief</span><span class="t-hw" style="flex-basis:2.2%"></span><span class="t-slack"></span></div><p class="track-key">One 90-minute session. Cold open, core, debrief, homework.</p><div class="tbl"><table class="struct"><thead><tr><th>Block</th><th>Time</th><th>What happens</th></tr></thead><tbody><tr><td>Cold open</td><td>10 min</td><td>One pre-assigned person demos something they did with AI since last session. Real work only.</td></tr><tr><td>Core</td><td>45–60 min</td><td>One technique, hands-on, on each person's own project. Facilitator drops into breakout rooms.</td></tr><tr><td>Debrief</td><td>10–15 min</td><td>What worked, what broke, where the model lied. Every failure gets a bin from the taxonomy in Handout 2. Someone logs it in the Playbook.</td></tr><tr><td>Homework</td><td>2 min</td><td>Apply the technique to something real before next session.</td></tr></tbody></table></div></div></div></div></div></section>
+<section class="session" id="s1">
+  <div class="wrap">
+    <hr class="hairline">
+    <div class="s-head">
+      <div>
+        <div class="eyebrow"><span class="num">1</span><span class="tag">Session</span><span class="when">Sep 17 &amp; 18</span></div>
+        <h2>Prompting as Spec-Writing, and Attribution</h2>
+      </div>
+      <div class="mini"><small>10 · 55 · 10</small><div class="track" aria-hidden="true"><span class="t-open" style="flex-basis:11.1%"></span><span class="t-core" style="flex-basis:61.1%"></span><span class="t-debrief" style="flex-basis:11.1%"></span><span class="t-slack"></span></div></div>
+    </div>
+    <div class="gw"><div><span class="tag">Goal</span><p>Participants stop writing one-line prompts and start writing specifications: context, constraints, examples, output format, success criteria. They also leave knowing what RAND's AI-use policy says about attribution and disclosure.</p></div><div><span class="tag">Why first</span><p>Everything downstream (documents, data, agents) fails quietly if the ask is vague. Most people who "know the basics" have never seen their own prompt history critiqued. And nobody should spend a term guessing what they are allowed to do.</p></div></div>
+    <div class="kit"><span class="tag">Ready-made materials</span><p class="kit-note">Use these when nobody has their own. Everything here is public or was written for this course.</p><dl><dt>The policy</dt><dd>Screen-share the current RAND AI-use policy and read the relevant passages aloud.</dd><dt>Bad prompt for the cold open</dt><dd><span class="mono">Summarize this report.</span> Run it on the GAO High-Risk Series update (free at gao.gov/high-risk-list; also the document for Session 2).</dd><dt>The rewrite</dt><dd><span class="mono">I'm a RAND policy analyst drafting a two-page brief for congressional appropriations staff. Attached is GAO's latest High-Risk Series update. Summarize what changed since the previous update: areas added, removed, or with a changed rating. Under 250 words. Only claims GAO itself makes; no recommendations of your own. Output: a three-column table (area, what changed, page cite), then one paragraph on the overall trend.</span></dd><dt>Three bad prompts for anyone with no history to excavate</dt><dd><span class="mono">Is this methodology sound?</span> with nothing attached. <span class="mono">Write a lit review on sanctions effectiveness.</span> <span class="mono">Make this better,</span> followed by any paragraph.</dd></dl></div>
+    <div class="plan">
+  <div class="plan-title"><h3>Plan</h3><small>90 minutes</small></div>
+  <div class="tl">
+    <div class="min">10<small>min</small></div><div><div class="lab">Cold open</div><p>You demo, since nobody has homework yet. Show one prompt you wrote badly and the rewrite. Set the tone: this group is about failure as much as success.</p></div>
+    <div class="min">55<small>min</small></div><div><div class="lab">Core</div><ol class="steps"><li><div><span class="st">Policy and attribution<span class="m">10</span></span><p>Screen-share the RAND AI-use policy. Read the relevant passages together. Answer: what must be disclosed, to whom, and when? What is prohibited? What data cannot go into which tools? Where is it silent? Nobody should leave guessing.</p></div></li><li><div><span class="st">Excavation<span class="m">10</span></span><p>Everyone opens their chat history and copies their three most recent real prompts into a scratch doc. No cleanup.</p></div></li><li><div><span class="st">The five parts<span class="m">10</span></span><p>Introduce the spec frame on a shared screen. A good prompt usually has: <strong>Role/context</strong> (who is the reader, what is the project), <strong>Task</strong> (one verb, one object), <strong>Constraints</strong> (length, sources, tone, what to exclude), <strong>Examples</strong> (one good, one bad if possible), <strong>Output shape</strong> (table, memo, bullets, JSON). Not every prompt needs all five; every prompt should have consciously skipped the ones it skips.</p></div></li><li><div><span class="st">Rewrite<span class="m">15</span></span><p>Each person rewrites one of their three prompts against the frame and runs both versions. Same model, same session type.</p></div></li><li><div><span class="st">Pairs<span class="m">10</span></span><p>Breakout rooms in pairs; each person shares their screen. Partner reads both outputs cold and says which is better and why, before seeing which prompt produced it.</p></div></li></ol></div>
+    <div class="min">10<small>min</small></div><div><div class="lab">Debrief</div><p>Round the room: what changed most? Usually it's output shape or the missing "who is this for." Log two or three before/after pairs in the Playbook.</p></div>
+    <div class="min">&nbsp;</div><div><div class="lab">Homework</div><p>Rewrite one real prompt per day this week. Bring the one where the rewrite made the <em>smallest</em> difference; that's the interesting case.</p></div>
+    <div class="min">60<small>min cut</small></div><div><div class="lab">For 60 minutes</div><p class="cut">Cut the pairs step; do rewrites solo and debrief directly. Cut the policy block to five minutes and assign the rest as reading from the handout.</p></div>
+  </div>
+  <div class='watch'><span class='tag tag--red'>Facilitator watch-outs</span><ul><li>Someone will say "I just iterate in conversation instead." Fine, but ask them to count turns. A spec upfront usually saves five.</li><li>Pushback on "examples" as too much work. Point out that one example of the output shape often beats three paragraphs of description.</li><li>Someone will ask whether using the model as an editor requires disclosure. Answer from the policy, not from opinion. If the policy is unclear, log it as a question to raise upward.</li></ul></div>
+</div>
+    <article class="handout">
+  <div class="h-top"><span class="tag">Handout</span><span class="hn">1 of 6</span></div>
+  <h3>Prompting as Spec-Writing, and Attribution</h3>
+  <p class="idea"><span class="tag">The idea in one line</span>You are briefing a very fast, very literal colleague who has never met you.</p>
+  <div class="h-grid"><div><div class="hs"><span class="tag">The five parts</span><div class="tbl"><table class="grid"><thead><tr><th>Part</th><th>Ask yourself</th><th>Example fragment</th></tr></thead><tbody><tr><td>Context</td><td>Who is this for? What project?</td><td><span class="mono">I'm drafting a RAND research brief for a congressional staffer audience.</span></td></tr><tr><td>Task</td><td>One verb, one object</td><td><span class="mono">Summarize the methodological limitations of this study.</span></td></tr><tr><td>Constraints</td><td>Length, sources, tone, exclusions</td><td><span class="mono">Under 300 words. Only limitations the authors themselves acknowledge. No recommendations.</span></td></tr><tr><td>Examples</td><td>What does good look like?</td><td><span class="mono">Here is a paragraph in the house style: [paste].</span></td></tr><tr><td>Output shape</td><td>Table? Memo? Bullets?</td><td><span class="mono">Three-column table: limitation, page cite, severity.</span></td></tr></tbody></table></div></div><div class="hs"><span class="tag">Quick wins</span><ul><li>Say who the reader is. It changes vocabulary, length, and what gets left out.</li><li>Give the model permission to say "not in the document." Otherwise it will invent.</li><li>Ask for the output shape you will paste into your own work. Reformatting is wasted time.</li><li>If you'd need to give a human an example, give the model one.</li></ul></div></div><div><div class="hs"><span class="tag">Attribution and disclosure</span><p>RAND's AI-use policy governs what you may do, and we read it together in Session 1. Know: what must be disclosed, where, and to whom; what's prohibited; what data can't go into which tools. If it's unclear, ask before you're asked. The words under your name are yours.</p></div><div class="hs pit"><span class="tag tag--red">Pitfalls</span><ul><li>Compound asks ("summarize, critique, and rewrite") get mediocre results on all three. Split them.</li><li>"Be concise" without a number means nothing. Say 200 words.</li><li>Politeness costs nothing but adds nothing. Clarity is the courtesy.</li></ul></div><div class="hs deep"><span class="tag">Go deeper</span><ul><li>The RAND AI-use policy, as read in Session 1.</li><li>Anthropic prompt engineering guide: <a href="https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview">docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview</a></li><li>OpenAI prompt engineering guide: <a href="https://platform.openai.com/docs/guides/prompt-engineering">platform.openai.com/docs/guides/prompt-engineering</a></li><li>Ethan Mollick, <em>One Useful Thing</em> (practical, non-engineer): <a href="https://www.oneusefulthing.org">oneusefulthing.org</a></li></ul></div></div></div>
+</article>
+  </div>
+</section><section class="session" id="s2">
+  <div class="wrap">
+    <hr class="hairline">
+    <div class="s-head">
+      <div>
+        <div class="eyebrow"><span class="num">2</span><span class="tag">Session</span><span class="when">Oct 1 &amp; 2</span></div>
+        <h2>Documents, Context Rot, and How Models Fail</h2>
+      </div>
+      <div class="mini"><small>10 · 55 · 10</small><div class="track" aria-hidden="true"><span class="t-open" style="flex-basis:11.1%"></span><span class="t-core" style="flex-basis:61.1%"></span><span class="t-debrief" style="flex-basis:11.1%"></span><span class="t-slack"></span></div></div>
+    </div>
+    <div class="gw"><div><span class="tag">Goal</span><p>Participants learn that "the model accepted the file" and "the model read the file" are different claims, and that a bigger context window is a bigger bucket, not a better reader. They leave with the group's taxonomy of model failure, which every later debrief uses.</p></div><div><span class="tag">Why</span><p>Half of RAND inputs are long PDFs with tables, footnotes, and scanned pages. This is where confident, wrong answers come from, so it is the right place to learn the patterns those answers follow.</p></div></div>
+    <div class="kit"><span class="tag">Ready-made materials</span><p class="kit-note">Use these when nobody has their own. Everything here is public or was written for this course.</p><dl><dt>The document</dt><dd>GAO's latest High-Risk Series update (gao.gov/high-risk-list). Long, with summary tables, dense footnotes, and an appendix. Download the PDF, then get the text layer with copy-paste or a converter.</dd><dt>The three questions</dt><dd>Before the session, pick one table cell and one footnote and write down the answers. Table: <span class="mono">How many high-risk areas are on the list this cycle, and how many were added?</span> Footnote: ask about the one you picked. Argument: <span class="mono">In one paragraph, what is GAO's overall assessment of progress since the last update?</span></dd><dt>Filler for the context rot demo</dt><dd>Forty pages of the report's own appendix, or any long Federal Register notice. Bury the page with the table in the middle for the second run.</dd><dt>Reproducible failures, one per bin</dt><dd>Fabrication: <span class="mono">Give me five peer-reviewed papers on sanctions and remittance flows, with DOIs.</span> Open two. Misreading: the table question above, asked of the PDF. Overreach: ask the GAO report about a topic you have confirmed it does not cover. Drift: the long thread from the context rot demo, with a new question. Sycophancy: <span class="mono">Since the Federal Reserve sets fiscal policy, how should it respond to the deficit?</span> Silent substitution: <span class="mono">Summarize only the footnotes on pages 10 to 20.</span> Watch it summarize the body.</dd></dl></div>
+    <div class="plan">
+  <div class="plan-title"><h3>Plan</h3><small>90 minutes</small></div>
+  <div class="tl">
+    <div class="min">10<small>min</small></div><div><div class="lab">Cold open</div><p>Prompt rewrite homework demo.</p></div>
+    <div class="min">55<small>min</small></div><div><div class="lab">Core</div><ol class="steps"><li><div><span class="st">Same document, three formats<span class="m">15</span></span><p>Each person uploads the GAO report as PDF, pastes the text as plain text, and (if possible) converts it to markdown. Ask the same three questions of each: one about a table value, one about a footnote, one about the overall argument. Compare. The table question usually breaks the PDF version.</p></div></li><li><div><span class="st">Context rot, live<span class="m">15</span></span><p>Take a short question the model answered correctly in a fresh chat. Now paste 40 pages of unrelated material first, then ask again. Then try with the relevant page buried in the middle of the 40. Show the degradation. Name it: performance falls as context grows, and information in the middle gets lost.</p></div></li><li><div><span class="st">Hygiene<span class="m">10</span></span><p>Three habits: (a) start a fresh conversation when the topic shifts; (b) ask the model to write a summary of state before continuing a long thread, then start a new thread from that summary; (c) extract first, reason second: pull the relevant sections into a clean document before asking the hard question.</p></div></li><li><div><span class="st">Six ways it goes wrong<span class="m">15</span></span><p>Introduce the bins: <strong>fabrication</strong> (invented citation, number, quote); <strong>misreading</strong> (table, footnote, scanned page); <strong>overreach</strong> (answered a question the source didn't address); <strong>drift</strong> (long conversation, stale instruction); <strong>sycophancy</strong> (agreed with a bad premise); <strong>silent substitution</strong> (did a different, easier task). Run two or three of the reproducible failures live. Then the room sorts everything that went wrong in steps 1 and 2 into bins, and proposes one catch per bin.</p></div></li></ol></div>
+    <div class="min">10<small>min</small></div><div><div class="lab">Debrief</div><p>Which format won for which question? Log a "file format guide" in the Playbook. Every misread goes in the Lies Log with its bin. Write the bins and catches into the Playbook as a one-page checklist; this is the group's first real artifact.</p></div>
+    <div class="min">&nbsp;</div><div><div class="lab">Homework</div><p>Take one document you'd normally just upload. Convert it, chunk it, or extract from it first. Note whether the answers change. Use the pre-flight on everything for two weeks, and bring the failure it didn't catch.</p></div>
+    <div class="min">60<small>min cut</small></div><div><div class="lab">For 60 minutes</div><p class="cut">Cut the hygiene block to a five-minute talk; assign it as reading from the handout. Introduce the bins from the handout table without the live demos.</p></div>
+  </div>
+  <div class='watch'><span class='tag tag--red'>Facilitator watch-outs</span><ul><li>Scanned PDFs (image-only) are the extreme case. If you have one, show it; the model may see nothing and still answer.</li><li>Someone will note their tool has a million-token window. Point them to the Chroma study: every model tested degraded with length.</li><li>Some failures will be user error dressed as model error. Handle gently; ask "what would the spec have needed to say?" rather than assigning blame.</li></ul></div>
+</div>
+    <article class="handout">
+  <div class="h-top"><span class="tag">Handout</span><span class="hn">2 of 6</span></div>
+  <h3>Documents, Context Rot, and How Models Fail</h3>
+  <p class="idea"><span class="tag">The idea in one line</span>Accepting a file is not reading it, and models fail in patterns you can learn.</p>
+  <div class="h-grid"><div><div class="hs"><span class="tag">File formats, roughly</span><div class="tbl"><table class="grid"><thead><tr><th>Format</th><th>What happens</th><th>Use when</th></tr></thead><tbody><tr><td>Plain text / markdown</td><td>Cleanest read; structure preserved if headers are marked</td><td>Always, if you can get it</td></tr><tr><td>PDF (text layer)</td><td>Usually fine for prose; tables, footnotes, and multi-column layouts often scramble</td><td>Prose-heavy documents</td></tr><tr><td>PDF (scanned image)</td><td>Model may see little or nothing and still answer confidently</td><td>Avoid; OCR first</td></tr><tr><td>.docx / .odt / spreadsheets</td><td>Depends on the tool's converter; check a known value</td><td>Confirm before trusting</td></tr></tbody></table></div></div><div class="hs"><span class="tag">Three habits</span><ol><li><strong>Fresh threads.</strong> New topic, new conversation. Long chats accumulate stale instructions.</li><li><strong>Summarize and restart.</strong> In a long thread: <span class="mono">Write a 200-word summary of where we are and what's decided.</span> Paste that into a new chat.</li><li><strong>Extract, then reason.</strong> Pull the relevant pages or table into a clean document first. Ask the hard question of the small document.</li></ol></div><div class="hs"><span class="tag">Six ways it goes wrong</span><div class="tbl"><table class="grid"><thead><tr><th>Failure</th><th>What it looks like</th><th>The catch</th></tr></thead><tbody><tr><td>Fabrication</td><td>Invented citation, quote, number, URL</td><td>Verify two citations at random. If one fails, verify all.</td></tr><tr><td>Misreading</td><td>Table value wrong, footnote missed, scan unread</td><td>Ask one question you know the answer to.</td></tr><tr><td>Overreach</td><td>Answers a question the source doesn't address</td><td><span class="mono">What in the source supports this? Quote it.</span></td></tr><tr><td>Drift</td><td>Long conversation, old instruction still active</td><td>Fresh thread. Summarize and restart.</td></tr><tr><td>Sycophancy</td><td>Agrees with your bad premise</td><td><span class="mono">Argue that my premise is wrong.</span></td></tr><tr><td>Silent substitution</td><td>Did an easier, adjacent task</td><td><span class="mono">Restate the task you completed in one sentence.</span></td></tr></tbody></table></div></div></div><div><div class="hs"><span class="tag">The pre-flight</span><p>Before trusting any output you'll use:</p>
+<ol><li>Does it answer what I asked, or something nearby?</li><li>Can I point to where each key claim came from?</li><li>Did I check one thing I already knew?</li><li>Is this conversation older than the topic?</li></ol></div><div class="hs pit"><span class="tag tag--red">Pitfalls</span><ul><li>Uploading twelve documents and asking one question. Retrieval gets worse with each file.</li><li>Assuming the failure was the model's. Often the spec was missing a constraint. Check the spec first.</li><li>Not telling anyone. A failure you hide is a failure the next person repeats. Log it.</li></ul></div><div class="hs deep"><span class="tag">Go deeper</span><ul><li>Chroma, "Context Rot" (the study): <a href="https://www.trychroma.com/research/context-rot">trychroma.com/research/context-rot</a></li><li>Liu et al., "Lost in the Middle" (the earlier paper): <a href="https://aclanthology.org/2024.tacl-1.9/">aclanthology.org/2024.tacl-1.9</a></li><li>Anthropic, "Effective context engineering for AI agents" (why context is a finite resource): <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">anthropic.com/engineering/effective-context-engineering-for-ai-agents</a></li><li>The group Playbook, Lies Log section.</li></ul></div></div></div>
+</article>
+  </div>
+</section><section class="session" id="s3">
+  <div class="wrap">
+    <hr class="hairline">
+    <div class="s-head">
+      <div>
+        <div class="eyebrow"><span class="num">3</span><span class="tag">Session</span><span class="when">Oct 15 &amp; 16</span></div>
+        <h2>Data Work, and Deterministic Code Over Model Arithmetic</h2>
+      </div>
+      <div class="mini"><small>10 · 50 · 10</small><div class="track" aria-hidden="true"><span class="t-open" style="flex-basis:11.1%"></span><span class="t-core" style="flex-basis:55.6%"></span><span class="t-debrief" style="flex-basis:11.1%"></span><span class="t-slack"></span></div></div>
+    </div>
+    <div class="gw"><div><span class="tag">Goal</span><p>Participants stop asking the model to count, compute, or aggregate in its head, and start asking it to write code that does so. Then they learn to read the code.</p></div><div><span class="tag">Why</span><p>This is the single best hallucination defense for quantitative work. The model's reasoning is probabilistic; a script is checkable. It also opens code execution to non-programmers, which is where students get the most out of an hour.</p></div></div>
+    <div class="kit"><span class="tag">Ready-made materials</span><p class="kit-note">Use these when nobody has their own. Everything here is public or was written for this course.</p><dl><dt>The dataset</dt><dd>SIPRI Military Expenditure Database (sipri.org/databases/milex), the share-of-GDP sheet: one row per country, one column per year. Real, free, and policy-relevant. Fallback if SIPRI is down: the World Bank indicator MS.MIL.XPND.GD.ZS as CSV.</dd><dt>The counting question</dt><dd><span class="mono">How many countries spent more than 2% of GDP on the military in the latest year?</span> Ask in prose three times, then <span class="mono">Write and run code that counts them, and print the list.</span> Then a chart: the fifteen highest shares as a bar chart.</dd><dt>For anyone without their own data</dt><dd>Same file, different question: median share by region, or which countries crossed 2% in the last decade.</dd></dl></div>
+    <div class="plan">
+  <div class="plan-title"><h3>Plan</h3><small>90 minutes</small></div>
+  <div class="tl">
+    <div class="min">10<small>min</small></div><div><div class="lab">Cold open</div><p>Document homework demo, and the failure the pre-flight didn't catch.</p></div>
+    <div class="min">50<small>min</small></div><div><div class="lab">Core</div><ol class="steps"><li><div><span class="st">The demonstration<span class="m">10</span></span><p>Give the model a spreadsheet of 200 rows and ask "how many rows have value X in column Y?" in plain prose. Then ask it to write and run code that counts. Compare. Do it three times; the prose answer drifts, the code doesn't.</p></div></li><li><div><span class="st">Your own data<span class="m">20</span></span><p>Everyone brings a dataset (a CSV, a table pulled from a report, survey results). Task: get one descriptive statistic and one chart via code execution. Non-coders are told to ask the model to explain each line.</p></div></li><li><div><span class="st">Read the code<span class="m">10</span></span><p>Breakout pairs. Each person explains their partner's generated script back to them without running it. If you can't explain it, you can't trust it.</p></div></li><li><div><span class="st">Where the trick doesn't apply<span class="m">10</span></span><p>Discussion: a lot of RAND work is judgment (framing, synthesis, argument). The code trick fixes arithmetic, not thinking. Which of your tasks this week were arithmetic in disguise? Which were judgment?</p></div></li></ol></div>
+    <div class="min">10<small>min</small></div><div><div class="lab">Debrief</div><p>Log the "count in prose vs. count in code" discrepancy in the Lies Log. Start a "useful snippets" section in the Playbook.</p></div>
+    <div class="min">&nbsp;</div><div><div class="lab">Homework</div><p>Redo one analysis you've already done by hand or in Excel using generated code. Do the numbers match?</p></div>
+    <div class="min">60<small>min cut</small></div><div><div class="lab">For 60 minutes</div><p class="cut">Cut step 4 to a two-minute framing statement; fold "read the code" into the debrief.</p></div>
+  </div>
+  <div class='watch'><span class='tag tag--red'>Facilitator watch-outs</span><ul><li>Non-coders will freeze. The fix is the phrase "explain this to me one line at a time." Model it early.</li><li>Someone will get a result that contradicts their Excel. That's the best possible outcome; spend the debrief there.</li></ul></div>
+</div>
+    <article class="handout">
+  <div class="h-top"><span class="tag">Handout</span><span class="hn">3 of 6</span></div>
+  <h3>Data Work, and Deterministic Code Over Model Arithmetic</h3>
+  <p class="idea"><span class="tag">The idea in one line</span>Ask the model to write the thing that counts, then read what it wrote.</p>
+  <div class="h-grid"><div><div class="hs"><span class="tag">Why it works</span><p>The model produces text by prediction. When it "computes" in prose, it is predicting what the answer looks like. When it writes a script and runs it, the script does the computing. The script is deterministic: same input, same output, every time, and you can read it.</p></div><div class="hs"><span class="tag">The pattern</span><ol><li><span class="mono">Write code that does X.</span> (Not "do X.")</li><li><span class="mono">Run it and show me the output.</span></li><li><span class="mono">Explain each line in plain English.</span></li><li>Spot-check one value against the source.</li></ol></div><div class="hs"><span class="tag">Useful phrasings</span><ul><li><span class="mono">Before computing, print the column names and the first five rows so I can confirm you loaded it correctly.</span></li><li><span class="mono">Add a sanity check: the counts should sum to the total row count.</span></li><li><span class="mono">If any value is missing or malformed, stop and tell me rather than dropping it silently.</span></li></ul></div><div class="hs"><span class="tag">Where the trick applies</span><p>Counting, filtering, joining, aggregating, plotting, reshaping, date math, string cleanup, anything Excel can do and then some.</p></div></div><div><div class="hs"><span class="tag">Where it doesn&#x27;t</span><p>Deciding what to count. Framing the question. Judging whether a result matters. Writing the paragraph that explains it. That's still your job, and the model is a critic there, not a calculator.</p></div><div class="hs pit"><span class="tag tag--red">Pitfalls</span><ul><li>Trusting a chart you didn't inspect the code for. Axis choices lie.</li><li>Letting the model "handle" missing data. Ask what it did.</li><li>Skipping the read-the-code step because it worked. It worked <em>this time</em>.</li></ul></div><div class="hs deep"><span class="tag">Go deeper</span><ul><li>The code execution or data analysis documentation for the RAND-approved tool.</li><li>Simon Willison on using LLMs for code, including for non-programmers: <a href="https://simonwillison.net">simonwillison.net</a></li><li>Ethan Mollick, <em>One Useful Thing</em>, on the "jagged frontier" of what models do well: <a href="https://www.oneusefulthing.org">oneusefulthing.org</a></li></ul></div></div></div>
+</article>
+  </div>
+</section><section class="session" id="s4">
+  <div class="wrap">
+    <hr class="hairline">
+    <div class="s-head">
+      <div>
+        <div class="eyebrow"><span class="num">4</span><span class="tag">Session</span><span class="when">Oct 29 &amp; 30</span></div>
+        <h2>Agents, Subagents, and Cost</h2>
+      </div>
+      <div class="mini"><small>10 · 60 · 10</small><div class="track" aria-hidden="true"><span class="t-open" style="flex-basis:11.1%"></span><span class="t-core" style="flex-basis:66.7%"></span><span class="t-debrief" style="flex-basis:11.1%"></span><span class="t-slack"></span></div></div>
+    </div>
+    <div class="gw"><div><span class="tag">Goal</span><p>Participants understand what an agentic workflow is, when splitting work across subagents helps, and why parallelism buys speed rather than judgment. Before typing, they ask three questions: What is this task worth? Which model or effort setting fits it? How much verification will the output demand?</p></div><div><span class="tag">Why</span><p>This is where "chatbot" becomes "tool," and also where errors multiply. Nate's point: firing off ten agents makes the work faster and harder to check, and no better. The same judgment applies one level down. Students default to one model at one setting for everything; fast cheap models are right for half of research work, and slow expensive ones are wrong for half of it too. "Cost" means money, wall-clock time, and how much checking the output will need.</p></div></div>
+    <div class="kit"><span class="tag">Ready-made materials</span><p class="kit-note">Use these when nobody has their own. Everything here is public or was written for this course.</p><dl><dt>The three documents</dt><dd>The last three annual editions of the Department of Defense report to Congress on Military and Security Developments Involving the People's Republic of China (public, on defense.gov). Same topic, same structure, changing numbers.</dd><dt>The agentic task</dt><dd><span class="mono">Read these three reports. Extract every quantitative claim about the size of the PLA Navy into a table: claim, report year, page cite. Flag every place the editions disagree with each other.</span> The implicit decision to catch: what counts as a ship.</dd><dt>Manual version for tools without agents</dt><dd>Assign one report per person, same table, then merge. The merge is where the parallel-reads lesson lands.</dd><dt>Question to run at two settings</dt><dd><span class="mono">A mid-sized city is considering a 1% payroll tax to fund a homelessness program. What are the three strongest objections an economist would raise, and what evidence would settle each?</span> Cheapest model, then highest effort. Time both.</dd><dt>Five tasks for the cost estimation game, with the tier to argue toward</dt><dd>(1) Turn this bulleted list into a table: A. (2) Find the five most-cited papers on secondary sanctions since 2018: B, since you will verify every one. (3) Draft the limitations section of a survey-based study: C. (4) Explain fixed effects versus random effects in two sentences: A, or B if you are going to teach it. (5) Read these three DoD reports and tell me where they disagree: B and agentic; the disagreements need checking. Expect a fight over 4 and 5.</dd></dl></div>
+    <div class="plan">
+  <div class="plan-title"><h3>Plan</h3><small>90 minutes</small></div>
+  <div class="tl">
+    <div class="min">10<small>min</small></div><div><div class="lab">Cold open</div><p>Data homework demo.</p></div>
+    <div class="min">60<small>min</small></div><div><div class="lab">Core</div><ol class="steps"><li><div><span class="st">What an agent is<span class="m">10</span></span><p>Screen-share a simple diagram: an agent is a model in a loop with tools. It reads, acts, observes, repeats. Every step is a chance to be wrong; every step is also something you can inspect.</p></div></li><li><div><span class="st">One task, agentically<span class="m">15</span></span><p>Everyone gives the model the three-report extraction task with file access. Watch it work. Note where it skipped. Show how to read the trace, step by step; if your tool hides it, that's a limitation worth knowing.</p></div></li><li><div><span class="st">The intern analogy<span class="m">10</span></span><p>When would you split a research task across five interns? (Independent reads: five countries, five years.) When would that make it worse? (Anything requiring a shared understanding of the argument.) Subagents are the same. Reading parallelizes; writing and judgment don't. The real win connects to Session 2: each subagent gets a fresh context, so the main thread doesn't rot, and that only holds if the subtasks are truly independent.</p></div></li><li><div><span class="st">The three tiers<span class="m">15</span></span><p>Build a task ladder live in the shared doc. <strong>Tier A, disposable:</strong> reformatting, quick definitions, "what's another word for." Cheapest, fastest model, minimal checking. <strong>Tier B, consequential but checkable:</strong> lit search scoping, first-draft summaries, code you'll run and inspect. Mid-tier model or extended thinking; verify the parts you'll use. <strong>Tier C, judgment-heavy:</strong> methods critique, framing a research question, anything going into a deliverable under your name. Best model, high effort, and the output is a draft you own, not an answer. Then everyone runs one real question at the cheapest setting and the highest, and times both. Note the differences honestly; sometimes there aren't any.</p></div></li><li><div><span class="st">Cost estimation game<span class="m">10</span></span><p>Read out five tasks; everyone types a tier (A, B, or C) into chat at the same time. Argue the borderline ones. Where does "agentic" sit on the ladder? Usually B, sometimes C, never A.</p></div></li></ol></div>
+    <div class="min">10<small>min</small></div><div><div class="lab">Debrief</div><p>What did the agent skip? Where did it decide something you'd have wanted to decide? Where did the expensive setting earn its cost, and where was it identical? Log both. Start a "tiering guide" section in the Playbook.</p></div>
+    <div class="min">&nbsp;</div><div><div class="lab">Homework</div><p>Run one agentic task and one manual version of the same task. Which was faster? Which was right? Tag each AI task you do this week A/B/C before you run it, and notice when you were wrong.</p></div>
+    <div class="min">60<small>min cut</small></div><div><div class="lab">For 60 minutes</div><p class="cut">Cut the cost game; fold the tiers into a five-minute framing statement after the intern analogy.</p></div>
+  </div>
+  <div class='watch'><span class='tag tag--red'>Facilitator watch-outs</span><ul><li>The agent will make an implicit decision (which claims count as "quantitative," how to resolve a conflict). Catch one live; that's the lesson.</li><li>If participants don't have agentic tools, simulate: run the steps manually in sequence and discuss where a loop would have helped and where it would have hidden a mistake.</li><li>The interesting finding on tiers is usually that the cheap model was fine for more than expected. Let that land; don't rush to defend the frontier model.</li><li>If RAND's tool exposes only one model, run the tier exercise on effort/thinking settings and conversation length instead.</li></ul></div>
+</div>
+    <article class="handout">
+  <div class="h-top"><span class="tag">Handout</span><span class="hn">4 of 6</span></div>
+  <h3>Agents, Subagents, and Cost</h3>
+  <p class="idea"><span class="tag">The idea in one line</span>Loops multiply both capability and error, so decide what a task is worth before you choose the tool.</p>
+  <div class="h-grid"><div><div class="hs"><span class="tag">When agentic helps</span><ul><li>The task has steps a human would also take (find, read, extract, compare).</li><li>Each step produces something inspectable.</li><li>You'd rather review a trace than do the steps yourself.</li></ul></div><div class="hs pit"><span class="tag tag--red">When it hurts</span><ul><li>The task is one judgment call dressed up as a process.</li><li>You can't see what the agent did between input and output.</li><li>Speed is the only benefit, and you'll spend the saved time checking.</li></ul></div><div class="hs"><span class="tag">Subagents: the intern test</span><p>Would you split this across five interns who can't talk to each other? Five independent reads (countries, years, documents): yes. One argument that needs shared understanding: no. Reading parallelizes. Writing and judgment don't. Parallel agents make implicit, conflicting decisions, and someone has to reconcile them: you. The real benefit is that each subagent gets a fresh context, so the main thread doesn't rot (Handout 2).</p></div><div class="hs"><span class="tag">Three tiers</span><div class="tbl"><table class="grid"><thead><tr><th>Tier</th><th>What it is</th><th>Right tool</th><th>Checking required</th></tr></thead><tbody><tr><td>A: Disposable</td><td>Reformatting, quick lookups, phrasing</td><td>Fastest, cheapest model</td><td>Glance</td></tr><tr><td>B: Consequential, checkable</td><td>Scoping a lit search, first-pass summaries, code you'll run, agentic extraction</td><td>Default model or extended thinking</td><td>Verify what you'll use</td></tr><tr><td>C: Judgment</td><td>Methods critique, framing, anything under your name</td><td>Best model, high effort</td><td>Treat as a draft you own</td></tr></tbody></table></div></div></div><div><div class="hs"><span class="tag">Cost has three parts</span><ol><li>Money and tokens (usually the smallest).</li><li>Your wall-clock time waiting.</li><li>Verification burden: how long it takes to confirm the output is right. This dominates for Tier C, and for every agentic run.</li></ol></div><div class="hs"><span class="tag">Inspection habits</span><ul><li>Read the trace. If your tool doesn't show one, treat the output as Tier C.</li><li>Ask the agent to list every decision it made that wasn't in your instructions.</li><li>Spot-check the step most likely to fail (usually extraction from a table or a scanned page).</li></ul></div><div class="hs pit"><span class="tag tag--red">Pitfalls</span><ul><li>Assuming parallel means thorough. It means fast.</li><li>Letting the agent resolve a disagreement between sources. That's your call.</li><li>Ten agents, one reviewer. The reviewer is the bottleneck.</li><li>Using the frontier model for reformatting, or the cheap model for anything you'll cite.</li><li>Believing that more compute fixes a bad spec. It amplifies it.</li></ul></div><div class="hs deep"><span class="tag">Go deeper</span><ul><li>Anthropic, "Building effective agents": <a href="https://www.anthropic.com/research/building-effective-agents">anthropic.com/research/building-effective-agents</a></li><li>Anthropic, "How we built our multi-agent research system" (the case for parallel reads): <a href="https://www.anthropic.com/engineering/multi-agent-research-system">anthropic.com/engineering/multi-agent-research-system</a></li><li>Cognition, "Don't Build Multi-Agents" (the case against parallel writes): <a href="https://cognition.com/blog/dont-build-multi-agents">cognition.com/blog/dont-build-multi-agents</a></li><li>LangChain, "How and when to build multi-agent systems" (reconciling the two): <a href="https://www.langchain.com/blog/how-and-when-to-build-multi-agent-systems">langchain.com/blog/how-and-when-to-build-multi-agent-systems</a></li><li>Simon Willison's blog (running notes on model capabilities and costs): <a href="https://simonwillison.net">simonwillison.net</a></li></ul></div></div></div>
+</article>
+  </div>
+</section><section class="session" id="s5">
+  <div class="wrap">
+    <hr class="hairline">
+    <div class="s-head">
+      <div>
+        <div class="eyebrow"><span class="num">5</span><span class="tag">Session</span><span class="when">Nov 12 &amp; 13</span></div>
+        <h2>Skill Docs, with Quals in View</h2>
+      </div>
+      <div class="mini"><small>10 · 50 · 10</small><div class="track" aria-hidden="true"><span class="t-open" style="flex-basis:11.1%"></span><span class="t-core" style="flex-basis:55.6%"></span><span class="t-debrief" style="flex-basis:11.1%"></span><span class="t-slack"></span></div></div>
+    </div>
+    <div class="gw"><div><span class="tag">Goal</span><p>Participants build two reusable configurations: a "RAND analyst" skill (style, citation conventions, standard caveats, preferred workflows) and a "qual study partner" skill that quizzes them from their own readings without inventing anything. Both are files the model loads every time.</p></div><div><span class="tag">Why</span><p>Everything the group has learned lives in people's heads and the Playbook. A skill document puts it in the model's context on demand. It's also the closest thing to institutional memory a chat tool has. With quals two weeks out, the study-partner skill is the most immediately useful thing the group can build, and it exercises every rule from Sessions 1 through 4.</p></div></div>
+    <div class="kit"><span class="tag">Ready-made materials</span><p class="kit-note">Use these when nobody has their own. Everything here is public or was written for this course.</p><dl><dt>Starter RAND analyst skill doc, for the room to edit</dt><dd class="kit-pre"><pre># RAND analyst
+Use when: drafting any RAND memo, brief, or summary.
+Reader: a policy generalist with ten minutes.
+Format: headers no deeper than three levels. Page-cite every factual claim as (Author, p. X).
+Always: flag uncertainty. Separate what the source says from what you infer.
+Never: invent a statistic. Resolve a conflict between sources without flagging it.
+Lit review: extract claims to a table first, synthesize second.</pre></dd><dt>Starter qual study partner skill doc</dt><dd class="kit-pre"><pre># Qual study partner
+Use when: I am studying for the qualifying exam.
+Sources: only the readings I attach. If the answer is not in them, say so.
+Mode: quiz me. One question at a time. Do not give the answer until I have attempted it.
+After each attempt: what I got right, what I missed, and the page in the reading that covers it.
+Never: invent a citation. Agree with a wrong answer. Summarize a reading I have not attached.</pre></dd><dt>Test task</dt><dd>The Session 1 rewrite prompt on the GAO report, with and without the analyst skill loaded. Diff the two outputs. For the study partner: attach one qual reading and ask for five questions; check every page cite.</dd></dl></div>
+    <div class="plan">
+  <div class="plan-title"><h3>Plan</h3><small>90 minutes</small></div>
+  <div class="tl">
+    <div class="min">10<small>min</small></div><div><div class="lab">Cold open</div><p>Agentic-vs-manual homework demo.</p></div>
+    <div class="min">50<small>min</small></div><div><div class="lab">Core</div><ol class="steps"><li><div><span class="st">What a skill doc is<span class="m">10</span></span><p>A markdown file with instructions the model reads when relevant: who the reader is, what the output looks like, what to always do (page cites), what to never do (invent a number). Shown as a Project system prompt, a style file, or a formal skill folder depending on the tool. Progressive disclosure: a short description tells the model when to load it; the full file loads only then.</p></div></li><li><div><span class="st">Draft together<span class="m">20</span></span><p>Draft the "RAND analyst" skill live in the shared doc, one person driving. Sections: <strong>Audience</strong> (policymaker, researcher, public). <strong>Output conventions</strong> (headers, length, citation format). <strong>Always</strong> (flag uncertainty, cite page, distinguish source claims from inference). <strong>Never</strong> (invent statistics, resolve source conflicts silently, use jargon without defining). <strong>Workflows</strong> (for a lit review, do X then Y). Pull directly from the Playbook.</p></div></li><li><div><span class="st">The study partner<span class="m">10</span></span><p>The room edits the starter qual skill. The rules that matter: only attached readings; quiz mode, one question at a time; page cite with every correction. Everyone attaches one real qual reading and runs it.</p></div></li><li><div><span class="st">Load and test<span class="m">10</span></span><p>Each person installs one of the drafts in their tool and runs a task from earlier in the term with and without it. Did the output change? Where?</p></div></li></ol></div>
+    <div class="min">10<small>min</small></div><div><div class="lab">Debrief</div><p>What did the skill fix? What did it make worse (over-constrained, verbose caveats)? Iterate one round in the Playbook.</p></div>
+    <div class="min">&nbsp;</div><div><div class="lab">Homework</div><p>Write a personal skill doc for your own project, or refine the study partner for your quals. Bring it to the build session; it's your build, or the seed of one.</p></div>
+    <div class="min">60<small>min cut</small></div><div><div class="lab">For 60 minutes</div><p class="cut">Skip drafting the analyst skill from scratch; the room edits the starter. Keep the study partner block.</p></div>
+  </div>
+  <div class='watch'><span class='tag tag--red'>Facilitator watch-outs</span><ul><li>Skill docs bloat fast. Keep each draft under one page. The model reads long instructions the way it reads long documents: badly (Session 2).</li><li>Someone will ask if this is just a long prompt. Sort of, with two differences: it's reusable, and it only loads when relevant, so it doesn't rot every conversation.</li><li>Security note for the handout: only use skill files you wrote or trust. A skill is instructions the model will follow.</li></ul></div>
+</div>
+    <article class="handout">
+  <div class="h-top"><span class="tag">Handout</span><span class="hn">5 of 6</span></div>
+  <h3>Skill Docs, with Quals in View</h3>
+  <p class="idea"><span class="tag">The idea in one line</span>Write down what you keep telling the model. Make it load automatically.</p>
+  <div class="h-grid"><div><div class="hs"><span class="tag">What goes in a skill doc</span><div class="tbl"><table class="grid"><thead><tr><th>Section</th><th>Example</th></tr></thead><tbody><tr><td>When to use</td><td><span class="mono">For any RAND deliverable, memo, or brief.</span></td></tr><tr><td>Audience</td><td><span class="mono">Default reader: a policy generalist with 10 minutes.</span></td></tr><tr><td>Output conventions</td><td><span class="mono">Headers, no more than 3 levels. Page-cite every factual claim as (Author, p. X).</span></td></tr><tr><td>Always</td><td><span class="mono">Flag uncertainty. Distinguish what the source says from what you infer.</span></td></tr><tr><td>Never</td><td><span class="mono">Invent a statistic. Resolve a conflict between sources without flagging it.</span></td></tr><tr><td>Workflows</td><td><span class="mono">Lit review: extract claims to a table first, synthesize second.</span></td></tr></tbody></table></div></div><div class="hs"><span class="tag">For quals: the study partner</span><p>Three rules do most of the work. Only the readings you attach, and "not in the readings" is an allowed answer. Quiz mode: one question at a time, no answer until you have tried. Every correction cites the page, and you check the page. Everything from Handouts 1 through 4 applies: it is a spec, the readings are documents, and the model will agree with a wrong answer unless told otherwise.</p></div></div><div><div class="hs"><span class="tag">Where it lives (depends on your tool)</span><ul><li>A Project or custom instruction block.</li><li>A style file you paste or attach.</li><li>A formal skill folder (SKILL.md plus optional scripts and references) for tools that support the open Agent Skills format.</li></ul></div><div class="hs"><span class="tag">Keep it short</span><p>One page. The model reads long instructions the way it reads long documents: worse as they grow. If the file is getting long, split it: one skill per task type.</p></div><div class="hs"><span class="tag">Test it</span><p>Run the same task with and without. If nothing changed, the skill isn't doing anything. If the output got verbose and caveat-heavy, you over-constrained.</p></div><div class="hs pit"><span class="tag tag--red">Security</span><p>A skill is a set of instructions the model will follow. Only use skill files you wrote yourself or got from a source you trust, and read every file in the folder before installing.</p></div><div class="hs pit"><span class="tag tag--red">Pitfalls</span><ul><li>Encoding preferences you haven't tested. Every line should have earned its place.</li><li>One giant skill for everything. Split by task.</li><li>Forgetting to update it. Revisit after every failure story.</li></ul></div><div class="hs deep"><span class="tag">Go deeper</span><ul><li>Anthropic Agent Skills documentation: <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview">platform.claude.com/docs/en/agents-and-tools/agent-skills/overview</a></li><li>Anthropic skills repository, with a template: <a href="https://github.com/anthropics/skills">github.com/anthropics/skills</a></li><li>Agent Skills open specification: <a href="https://agentskills.io">agentskills.io</a></li><li>Anthropic, "Effective context engineering" (why short, on-demand instructions beat long always-on ones): <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">anthropic.com/engineering/effective-context-engineering-for-ai-agents</a></li></ul></div></div></div>
+</article>
+  </div>
+</section><section class="session" id="s6">
+  <div class="wrap">
+    <hr class="hairline">
+    <div class="s-head">
+      <div>
+        <div class="eyebrow"><span class="num">6</span><span class="tag">Session</span><span class="when">Dec 10 &amp; 11. This session can use both days: demos on the first, critique and the Playbook on the second.</span></div>
+        <h2>Build Something, and the Critic in the Room</h2>
+      </div>
+      <div class="mini"><small>0 · 65 · 15</small><div class="track" aria-hidden="true"><span class="t-core" style="flex-basis:72.2%"></span><span class="t-debrief" style="flex-basis:16.7%"></span><span class="t-slack"></span></div></div>
+    </div>
+    <div class="gw"><div><span class="tag">Goal</span><p>Each participant ships one small artifact that uses what the group learned, demos it, and gets critiqued, with the model used as a reviewer rather than an author: steelman the opposing view, find the weakest claim, name what would change the conclusion. The group finalizes the Playbook.</p></div><div><span class="tag">Why</span><p>Ten weeks of technique are worth little without a made thing. The demos also give you evidence of what the group produced, useful for whoever asks whether it was worth running. And RAND has a peer-review culture: the model is a tireless, tactless first reviewer, and using it this way keeps the words yours.</p></div></div>
+    <div class="kit"><span class="tag">Ready-made materials</span><p class="kit-note">Use these when nobody has their own. Everything here is public or was written for this course.</p><dl><dt>Sample paragraph for the four moves</dt><dd>Written for this course, deliberately hedged and contestable. <span class="mono">Export controls on advanced chips will likely slow China's frontier AI development for several years. Chinese labs currently depend on Nvidia hardware for large training runs, and domestic alternatives appear to lag by at least a generation. Although smuggling and cloud access may blunt the effect somewhat, it seems unlikely that these channels can substitute at scale. The controls therefore probably buy the United States meaningful lead time, which policymakers should use to build governance capacity. Some analysts argue the controls accelerate Chinese self-sufficiency, but this concern may be overstated given the difficulty of replicating the semiconductor supply chain.</span></dd><dt>Reviewer to name</dt><dd><span class="mono">Review this as a RAND quality assurance reviewer would, then as a skeptical House Appropriations staffer would. Quote the sentence you are criticizing each time.</span></dd><dt>Default build for anyone who arrives empty-handed</dt><dd>The Session 5 skill doc plus the Session 3 script, turned into a repeatable workflow on the SIPRI data: load, count, chart, one paragraph of findings with page cites. Small enough to finish, real enough to critique.</dd></dl></div>
+    <div class="plan">
+  <div class="plan-title"><h3>Plan</h3><small>90 minutes</small></div>
+  <div class="tl">
+    <div class="min">0<small>min</small></div><div><div class="lab">Cold open</div><p>Skip; the session is the demo.</p></div>
+    <div class="min">65<small>min</small></div><div><div class="lab">Core</div><ol class="steps"><li><div><span class="st">The four moves<span class="m">10</span></span><p>Demo on the sample paragraph: (a) <span class="mono">Argue the opposite thesis as persuasively as you can.</span> (b) <span class="mono">Identify the three weakest claims and why a hostile reviewer would attack each.</span> (c) <span class="mono">What evidence would change this conclusion?</span> (d) <span class="mono">Rewrite this as the strongest version of the argument I am not making.</span> Show how "be brutal" produces performed brutality and "what would a reviewer who wanted to reject this say" produces substance.</p></div></li><li><div><span class="st">Ground rules<span class="m">5</span></span><p>Each demo: what problem, what you built, what the model did vs. what you did, what failed, three minutes. Then two minutes of critique: the demo's output goes through one of the four moves, live, and the builder says whether the critique is right and why.</p></div></li><li><div><span class="st">Demos<span class="m">40</span></span><p>Facilitator keeps time hard. Rule: nobody accepts a suggestion without being able to say why it's right.</p></div></li><li><div><span class="st">Playbook finalization<span class="m">10</span></span><p>Walk the Playbook as a group. Delete what didn't hold up. Tighten the failure checklist and the tiering guide. Decide who owns it going forward.</p></div></li></ol></div>
+    <div class="min">15<small>min</small></div><div><div class="lab">Debrief</div><p>Round the room: one thing you do differently now than in September. One thing you still don't trust. Close on the second list; it's the more honest one.</p></div>
+    <div class="min">&nbsp;</div><div><div class="lab">Homework</div><p>None. Or: teach one of these sessions to someone else. Pick the January topic.</p></div>
+    <div class="min">60<small>min cut</small></div><div><div class="lab">For 60 minutes</div><p class="cut">Three-minute demos, one-minute critique, no Playbook walk (do it async). <strong>Over two days:</strong> demos on day one; critique round, editing passes from the handout, and the Playbook walk on day two.</p></div>
+  </div>
+  <div class='watch'><span class='tag tag--red'>Facilitator watch-outs</span><ul><li>Demos run long. Share a timer on screen. Be the person who cuts off the demo, gently, every time.</li><li>Sycophancy is the enemy. If the model praises the build, the prompt was wrong.</li><li>Someone will find the model's critique wrong. Great: articulating why sharpens the argument anyway.</li><li>The temptation is to end on triumph. End on the "still don't trust" list. It's what they'll remember.</li></ul></div>
+</div>
+    <article class="handout">
+  <div class="h-top"><span class="tag">Handout</span><span class="hn">6 of 6</span></div>
+  <h3>Build Something, and the Critic in the Room</h3>
+  <p class="idea"><span class="tag">The idea in one line</span>Technique is worthless until it makes something, and a build isn't finished until someone has tried to break it.</p>
+  <div class="h-grid"><div><div class="hs"><span class="tag">Your build, in five parts</span><ol><li><strong>Problem:</strong> what recurring task did this fix?</li><li><strong>Build:</strong> what did you make? (skill doc, script, pipeline, template)</li><li><strong>Division of labor:</strong> what did the model do, what did you do, what did you check?</li><li><strong>Failure:</strong> what went wrong along the way?</li><li><strong>Next:</strong> what would you do with another week?</li></ol></div><div class="hs"><span class="tag">Four moves</span><div class="tbl"><table class="grid"><thead><tr><th>Move</th><th>Prompt</th><th>What it exposes</th></tr></thead><tbody><tr><td>Steelman the opposition</td><td><span class="mono">Argue the opposite thesis as persuasively as you can.</span></td><td>Gaps in your case</td></tr><tr><td>Weakest claims</td><td><span class="mono">Name the three weakest claims and how a hostile reviewer attacks each.</span></td><td>Where to add evidence or cut</td></tr><tr><td>What would change your mind</td><td><span class="mono">What evidence would overturn this conclusion?</span></td><td>Whether your claim is falsifiable</td></tr><tr><td>The argument you're not making</td><td><span class="mono">Write the strongest version of the case I've left out.</span></td><td>Missing framing</td></tr></tbody></table></div></div><div class="hs"><span class="tag">Making critique specific</span><ul><li>Name the reviewer: "a RAND QA reviewer," "a skeptical appropriations staffer," "a labor economist."</li><li>Forbid praise: <span class="mono">Do not tell me what works. Only what doesn't.</span></li><li>Demand location: <span class="mono">Quote the sentence you're criticizing.</span></li></ul></div><div class="hs"><span class="tag">Editing the output</span><div class="tbl"><table class="grid"><thead><tr><th>Pass</th><th>Prompt</th><th>Watch for</th></tr></thead><tbody><tr><td>Compression</td><td><span class="mono">Cut 30% without losing any claim.</span></td><td>It cuts your best sentence</td></tr><tr><td>Hedge audit</td><td><span class="mono">Flag every hedge. Which ones does the argument depend on?</span></td><td>Some hedges are the finding</td></tr><tr><td>First 90 seconds</td><td><span class="mono">Rewrite the opening for a reader with 90 seconds.</span></td><td>Loss of nuance the reader needs</td></tr></tbody></table></div>
+<p>Ask for a marked-up list, not a rewrite. Track what you reject.</p></div></div><div><div class="hs"><span class="tag">What you should now do differently</span><ul><li>Write a spec, not a question. Know the disclosure rules. (Session 1)</li><li>Extract before you reason; start fresh threads; run the pre-flight. (Session 2)</li><li>Ask for code, not arithmetic; read the code. (Session 3)</li><li>Parallelize reads, never judgment. Tier the task before choosing the tool. (Session 4)</li><li>Put what you keep saying into a skill doc. (Session 5)</li><li>Run an adversarial pass before you send. (Session 6)</li></ul></div><div class="hs pit"><span class="tag tag--red">What you should still not trust</span><ul><li>Any number the model computed in prose.</li><li>Any citation you haven't opened.</li><li>Any table read from a PDF you haven't spot-checked.</li><li>Any conversation older than the topic.</li><li>Any output that agrees with you too readily.</li></ul></div><div class="hs"><span class="tag">Keeping it going</span><ul><li>The Playbook has an owner, chosen in Session 6.</li><li>Add to the Lies Log when the model gets you. Someone else will thank you.</li><li>Re-run the failure sort in six months. The failure modes will have changed.</li></ul></div><div class="hs deep"><span class="tag">Go deeper</span><ul><li>Anthropic engineering blog: <a href="https://www.anthropic.com/engineering">anthropic.com/engineering</a></li><li>Simon Willison: <a href="https://simonwillison.net">simonwillison.net</a></li><li>Ethan Mollick, <em>One Useful Thing</em>: <a href="https://www.oneusefulthing.org">oneusefulthing.org</a></li><li>RAND's quality assurance standards for peer review.</li><li>The group Playbook.</li></ul></div></div></div>
+</article>
+  </div>
+</section><section class="session" id="s7">
+  <div class="wrap">
+    <hr class="hairline">
+    <div class="s-head">
+      <div>
+        <div class="eyebrow"><span class="num">7</span><span class="tag">Session</span><span class="when">Jan 7 &amp; 8</span></div>
+        <h2>Topic the Group Picks</h2>
+      </div>
+      
+    </div>
+    <div class="gw"><div><span class="tag">Goal</span><p>Decided by the group at the end of Session 6.</p></div><div><span class="tag">Why</span><p>By January the Lies Log, the tiering guide, and the quals will have shown where the real gaps are. Candidates, in rough order of likelihood: a second show-and-tell day for builds that weren't ready in December; a writing session that runs the editing passes and voice preservation on real drafts, with the policymaker one-pager (finding, so what, what to do, what we don't know) as the exercise; a re-run of the failure sort on the term's Lies Log; whatever quals revealed about the study partner skill.</p></div></div>
+    
+    
+    
+  </div>
+</section>
+<footer class="end"><div class="wrap"><hr class="hairline"><p>RAND AI Facilitation Group. Use the Handouts view and print to get one handout per page.</p></div></footer>
+<ol class="pips" aria-hidden="true"><li data-for="s1"></li><li data-for="s2"></li><li data-for="s3"></li><li data-for="s4"></li><li data-for="s5"></li><li data-for="s6"></li><li data-for="s7"></li></ol>
+<script>
+(function () {
+  // View toggle: everything / plans only / handouts only
+  var buttons = document.querySelectorAll('.views button');
+  function setView(v) {
+    document.body.classList.remove('v-plans', 'v-handouts');
+    if (v === 'plans') document.body.classList.add('v-plans');
+    if (v === 'handouts') document.body.classList.add('v-handouts');
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.view === v ? 'true' : 'false'); });
+    try { localStorage.setItem('curriculum-view', v); } catch (e) {}
+  }
+  buttons.forEach(function (b) { b.addEventListener('click', function () { setView(b.dataset.view); }); });
+  try { var saved = localStorage.getItem('curriculum-view'); if (saved) setView(saved); } catch (e) {}
+
+  // Scrollspy for the nav and the pip rail
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.session'));
+  var navLinks = document.querySelectorAll('.bar nav a');
+  var pips = document.querySelectorAll('.pips li');
+  function activate(id) {
+    navLinks.forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('href') === '#' + id); });
+    pips.forEach(function (p) { p.classList.toggle('is-active', p.dataset.for === id); });
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) activate(e.target.id); });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+    sections.forEach(function (s) { io.observe(s); });
+  }
+})();
+</script>

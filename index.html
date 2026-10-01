@@ -1,0 +1,364 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>RAND AI Facilitation Curriculum</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400&display=swap">
+<style>
+:root {
+  --ink: #161400;
+  --ink-2: #2D2B19;
+  --paper: #FFFFFF;
+  --paper-2: #ECEBE7;
+  --accent: #751DDB;
+  --accent-dark: #5B17AA;
+  --tint: #E3E3F7;
+  --tint-2: #D6BBF4;
+  --red: #BB352C;
+  --mute: #5C5B4D;
+  --rule: #B9B9B3;
+  --font-head: 'ABC Monument Grotesk', 'Monument Grotesk', 'Inter', Helvetica, Arial, sans-serif;
+  --font-body: 'Suisse Works', 'Source Serif 4', 'Times New Roman', Georgia, serif;
+  --font-mono: 'Fraktion Mono', 'DM Mono', 'Lucida Console', Monaco, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #F2F0E8;
+    --ink-2: #DAD7CB;
+    --paper: #1B1910;
+    --paper-2: #26241B;
+    --accent: #B08AF0;
+    --accent-dark: #C9ADF7;
+    --tint: #2A2540;
+    --tint-2: #3A2F5A;
+    --red: #E5786F;
+    --mute: #A8A69A;
+    --rule: #4A4838;
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #F2F0E8;
+  --ink-2: #DAD7CB;
+  --paper: #1B1910;
+  --paper-2: #26241B;
+  --accent: #B08AF0;
+  --accent-dark: #C9ADF7;
+  --tint: #2A2540;
+  --tint-2: #3A2F5A;
+  --red: #E5786F;
+  --mute: #A8A69A;
+  --rule: #4A4838;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink-2);
+  font: 400 17px/1.55 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: var(--accent); text-decoration: underline; text-decoration-color: var(--tint-2); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+a:hover { color: var(--accent-dark); text-decoration-color: currentColor; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+strong { font-weight: 600; color: var(--ink); }
+em { font-style: italic; }
+p { margin: 0 0 0.9rem; max-width: 66ch; }
+ul, ol { margin: 0 0 1rem; padding-left: 1.2rem; max-width: 66ch; }
+li { margin: 0 0 0.45rem; }
+li::marker { color: var(--accent); }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font-head); font-weight: 600; letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
+
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); }
+
+/* ---------- furniture ---------- */
+.hairline { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+.tag {
+  display: inline-flex; align-items: center; gap: 0.5em;
+  font: 500 11px/1 var(--font-head); letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent);
+}
+.tag::after { content: ""; display: inline-block; width: 1.4rem; border-top: 2px solid var(--accent); }
+.tag--red { color: var(--red); }
+.tag--red::after { border-top-color: var(--red); }
+.sigil { display: none; }
+
+/* ---------- cover ---------- */
+.cover { padding: 1.6rem 0 2.6rem; }
+.cover .hairline { margin-bottom: 2.6rem; }
+.cover-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.cover-top .org { font: 600 13px/1 var(--font-head); letter-spacing: 0.02em; color: var(--ink); }
+.brand { display: flex; align-items: center; gap: 0.9rem; }
+.brand svg { width: 56px; height: 56px; }
+.brand .org { display: block; }
+.brand .sub { display: block; font: 400 13px/1.3 var(--font-body); color: var(--mute); margin-top: 0.15rem; }
+.cover h1 {
+  font-size: clamp(42px, 6.6vw, 84px); line-height: 1.0; letter-spacing: -0.03em;
+  max-width: 16ch;
+}
+.cover .dek {
+  margin: 1.5rem 0 0; max-width: 52ch;
+  font-size: clamp(18px, 2vw, 22px); line-height: 1.4; color: var(--ink-2);
+}
+.cover .yes { font: 500 14px/1 var(--font-head); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 1.4rem 0 0; }
+.meta-band { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin: 3rem 0 0; }
+.meta-band div { border-top: 1px solid var(--rule); padding-top: 0.55rem; font: 500 12.5px/1.4 var(--font-head); color: var(--ink); }
+.meta-band .chev { color: var(--accent); margin-right: 0.35em; }
+
+.strip {
+  display: grid; grid-template-columns: repeat(10, 1fr);
+  margin: 2.6rem 0 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+}
+.strip a {
+  display: flex; flex-direction: column; gap: 0.55rem; padding: 0.9rem 0.65rem 1rem;
+  text-decoration: none; min-height: 7.2rem; border-right: 1px solid var(--rule); color: var(--ink);
+  font: 500 12.5px/1.3 var(--font-head);
+}
+.strip a:last-child { border-right: 0; }
+.strip a:hover { background: var(--tint); color: var(--accent-dark); }
+.strip .n { font: 600 28px/1 var(--font-head); font-variant-numeric: tabular-nums; color: var(--accent); letter-spacing: -0.02em; }
+
+/* ---------- sticky bar ---------- */
+.bar { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: 1px solid var(--rule); }
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 48px; flex-wrap: wrap; }
+.bar nav { display: flex; gap: 0; }
+.bar nav a {
+  font: 500 12.5px/1 var(--font-head); font-variant-numeric: tabular-nums; text-decoration: none;
+  padding: 1rem 0.6rem; color: var(--ink); border-bottom: 3px solid transparent; margin-bottom: -1px;
+}
+.bar nav a.is-active { border-bottom-color: var(--accent); color: var(--accent); }
+.bar nav a:hover { color: var(--accent-dark); }
+.views { display: flex; gap: 0; }
+.views button {
+  appearance: none; background: none; border: 1px solid var(--ink); color: var(--ink);
+  font: 500 11px/1 var(--font-head); letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.6rem 0.85rem; cursor: pointer; margin-left: -1px; border-radius: 0;
+}
+.views button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #FFFFFF; position: relative; z-index: 1; }
+.views button:hover:not([aria-pressed="true"]) { background: var(--tint); }
+
+/* ---------- front matter ---------- */
+.front { padding: 3rem 0 1rem; }
+.front-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 1.4rem; }
+.block { margin-bottom: 2.2rem; }
+.block > .tag { margin-bottom: 0.8rem; }
+
+.track { display: flex; height: 34px; border: 1px solid var(--rule); margin: 0.8rem 0 0.4rem; max-width: 640px; }
+.track span {
+  display: flex; align-items: center; padding: 0 0.6rem; white-space: nowrap; overflow: hidden;
+  font: 500 10.5px/1 var(--font-head); letter-spacing: 0.08em; text-transform: uppercase;
+  border-right: 1px solid var(--rule); color: var(--ink);
+}
+.track span:last-of-type { border-right: 0; }
+.track .t-open { background: var(--tint); }
+.track .t-core { background: var(--accent); color: #FFFFFF; }
+.track .t-debrief { background: var(--tint); }
+.track .t-hw { background: var(--paper-2); }
+.track .t-slack { background: transparent; flex: 1; border-right: 0; }
+.track-key { font: 400 13px/1.4 var(--font-body); color: var(--mute); max-width: 640px; margin: 0 0 1.2rem; }
+
+.struct { width: 100%; max-width: 640px; border-collapse: collapse; font-size: 15px; }
+.struct th { text-align: left; font: 500 10.5px/1.2 var(--font-head); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); padding: 0 0.8rem 0.5rem 0; border-bottom: 2px solid var(--ink); }
+.struct td { vertical-align: top; padding: 0.6rem 0.8rem 0.6rem 0; border-bottom: 1px solid var(--rule); }
+.struct td:first-child { font-family: var(--font-head); font-weight: 500; color: var(--ink); }
+.struct td:nth-child(2) { white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+.ph {
+  display: inline-block; padding: 0.05em 0.45em; border: 1px dashed var(--red); color: var(--red);
+  font: 500 11px/1.7 var(--font-head); letter-spacing: 0.06em; text-transform: uppercase; vertical-align: 0.1em;
+}
+
+/* ---------- sessions ---------- */
+.session { padding: 3.5rem 0 1rem; scroll-margin-top: 60px; }
+.session > .wrap > .hairline { margin-bottom: 1.4rem; border-top: 2px solid var(--ink); }
+.s-head { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end; margin-bottom: 2rem; }
+.s-head .eyebrow { display: flex; align-items: baseline; gap: 0.7rem; margin-bottom: 0.6rem; }
+.s-head .num { font: 600 40px/0.9 var(--font-head); font-variant-numeric: tabular-nums; color: var(--accent); letter-spacing: -0.02em; }
+.s-head h2 { font-size: clamp(28px, 3.6vw, 42px); line-height: 1.05; max-width: 24ch; }
+.s-head .mini { display: flex; flex-direction: column; align-items: flex-end; gap: 0.4rem; }
+.mini .track { height: 22px; width: 240px; margin: 0; }
+.mini .track span { padding: 0; justify-content: center; font-size: 10px; letter-spacing: 0.04em; }
+.mini small { font: 500 11px/1 var(--font-head); color: var(--mute); letter-spacing: 0.06em; text-transform: uppercase; }
+
+.gw { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 2.4rem; }
+.gw p { font-size: 18px; line-height: 1.5; }
+.gw .tag { margin-bottom: 0.6rem; }
+
+.plan { margin-bottom: 3rem; }
+.plan-title { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.2rem; }
+.plan-title h3 { font-size: 20px; }
+.plan-title small { font: 500 11px/1 var(--font-head); color: var(--mute); letter-spacing: 0.08em; text-transform: uppercase; }
+.tl { display: grid; grid-template-columns: 5.2rem 1fr; border-top: 1px solid var(--rule); }
+.tl > div { padding: 1rem 0; border-bottom: 1px solid var(--rule); }
+.tl .min { font: 600 24px/1 var(--font-head); font-variant-numeric: tabular-nums; color: var(--accent); padding-top: 1.05rem; letter-spacing: -0.02em; }
+.tl .min small { display: block; font: 500 10px/1.4 var(--font-head); letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); margin-top: 0.3rem; }
+.tl .lab { font: 500 11px/1 var(--font-head); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.55rem; }
+.tl p:last-child, .tl ol:last-child { margin-bottom: 0; }
+.steps { list-style: none; padding: 0; margin: 0; counter-reset: step; max-width: 72ch; }
+.steps li { display: grid; grid-template-columns: 1.7rem 1fr; gap: 0.6rem; margin: 0 0 0.9rem; counter-increment: step; }
+.steps li::before { content: counter(step); font: 600 17px/1.5 var(--font-head); color: var(--accent); font-variant-numeric: tabular-nums; }
+.steps .st { font-family: var(--font-head); font-weight: 600; color: var(--ink); font-size: 16px; }
+.steps .st .m { font-weight: 500; color: var(--mute); font-variant-numeric: tabular-nums; margin-left: 0.35em; }
+.steps p { margin: 0; }
+.tl .cut { color: var(--mute); }
+
+.watch { display: grid; grid-template-columns: 9.5rem 1fr; gap: 1.5rem; padding: 1.2rem 0 1.4rem; border-top: 2px solid var(--red); border-bottom: 1px solid var(--rule); margin-top: 1.6rem; }
+.watch ul { margin: 0; }
+.watch li::marker { color: var(--red); }
+
+/* ---------- handout ---------- */
+.handout { border: 1px solid var(--rule); border-top: 6px solid var(--accent); padding: 1.8rem clamp(1.2rem, 3vw, 2.6rem) 2.2rem; margin: 0 0 1rem; background: var(--paper); }
+.h-top { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--rule); padding-bottom: 0.6rem; margin-bottom: 1.4rem; }
+.h-top .tag::after { width: 3rem; }
+.h-top .hn { font: 500 11px/1 var(--font-head); letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); }
+.handout h3 { font-size: 26px; margin-bottom: 0.9rem; }
+.idea { font-size: 21px; line-height: 1.4; max-width: 56ch; margin: 0 0 1.8rem; padding-left: 1rem; border-left: 3px solid var(--accent); color: var(--ink); }
+.idea .tag { display: block; margin-bottom: 0.35rem; }
+.h-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.2rem; }
+.hs { margin-bottom: 1.5rem; }
+.hs > .tag { margin-bottom: 0.55rem; }
+.hs p, .hs ul, .hs ol { font-size: 15.5px; line-height: 1.5; }
+.hs ul, .hs ol { padding-left: 1.1rem; }
+.hs p:last-child, .hs ul:last-child, .hs ol:last-child { margin-bottom: 0; }
+.hs.pit li::marker { color: var(--red); }
+.hs.deep a { word-break: break-word; }
+.hs.deep li { font-size: 14px; }
+
+.grid { width: 100%; border-collapse: collapse; font-size: 14.5px; line-height: 1.4; margin: 0 0 0.4rem; }
+.grid th { text-align: left; font: 500 10.5px/1.2 var(--font-head); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); padding: 0 0.8rem 0.5rem 0; border-bottom: 2px solid var(--ink); vertical-align: bottom; }
+.grid td { vertical-align: top; padding: 0.55rem 0.8rem 0.55rem 0; border-bottom: 1px solid var(--rule); }
+.grid td:first-child { font-family: var(--font-head); font-weight: 500; font-size: 13.5px; color: var(--ink); white-space: nowrap; }
+.grid td:last-child, .grid th:last-child { padding-right: 0; }
+.tbl { overflow-x: auto; }
+
+.mono { font: 400 0.86em/1.5 var(--font-mono); background: var(--paper-2); padding: 0.1em 0.4em; color: var(--ink); }
+.grid .mono { display: inline-block; }
+
+.pips { position: fixed; right: 20px; bottom: 20px; display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; z-index: 20; }
+.pips li { width: 10px; height: 10px; background: var(--accent); opacity: 0.22; transition: opacity 200ms ease; }
+.pips li.is-active { opacity: 1; }
+
+body.v-plans .handout { display: none; }
+body.v-handouts .plan, body.v-handouts .gw, body.v-handouts .front, body.v-handouts .s-head .mini { display: none; }
+body.v-handouts .s-head { margin-bottom: 1rem; }
+
+.end { padding: 3rem 0 4rem; }
+.end .hairline { margin-bottom: 1rem; }
+.end p { font-size: 14px; color: var(--mute); }
+
+@media (max-width: 900px) {
+  .front-grid, .gw, .h-grid { grid-template-columns: 1fr; }
+  .strip { grid-template-columns: repeat(5, 1fr); }
+  .strip a:nth-child(5) { border-right: 0; }
+  .strip a:nth-child(-n+5) { border-bottom: 1px solid var(--rule); }
+  .s-head { grid-template-columns: 1fr; }
+  .s-head .mini { align-items: flex-start; }
+  .meta-band { grid-template-columns: 1fr 1fr; }
+  .watch { grid-template-columns: 1fr; gap: 0.6rem; }
+  .bar nav { overflow-x: auto; max-width: 100%; }
+}
+@media (max-width: 560px) {
+  .strip { grid-template-columns: repeat(2, 1fr); }
+  .strip a { border-bottom: 1px solid var(--rule); }
+  .strip a:nth-child(odd) { border-right: 1px solid var(--rule); }
+  .strip a:nth-child(even) { border-right: 0; }
+  .tl { grid-template-columns: 3.6rem 1fr; }
+  .pips { display: none; }
+}
+
+@media print {
+  :root { --ink: #161400; --ink-2: #2D2B19; --paper: #fff; --paper-2: #ECEBE7; --accent: #751DDB; --accent-dark: #5B17AA; --tint: #E3E3F7; --tint-2: #D6BBF4; --red: #BB352C; --rule: #B9B9B3; --mute: #5C5B4D; }
+  body { font-size: 12px; }
+  .bar, .pips, .strip, .end { display: none !important; }
+  .wrap { max-width: none; padding: 0; }
+  .session { padding-top: 0; break-before: page; }
+  .handout { break-before: page; border: 0; border-top: 6px solid var(--accent); padding: 1rem 0 0; }
+  .tl > div { break-inside: avoid; }
+  a { text-decoration: none; }
+}
+
+/* ready-made materials */
+.kit { background: var(--paper-2); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem 1.3rem; margin: 0 0 2.6rem; }
+.kit > .tag { margin-bottom: 0.4rem; }
+.kit-note { font-size: 13.5px; color: var(--mute); margin: 0 0 0.9rem; }
+.kit dl { display: grid; grid-template-columns: 11rem 1fr; gap: 0.7rem 1.4rem; margin: 0; max-width: 90ch; }
+.kit dt { font: 500 12px/1.4 var(--font-head); color: var(--ink); }
+.kit dd { margin: 0; font-size: 15px; line-height: 1.5; }
+.kit dd.kit-pre { grid-column: 1 / -1; }
+.kit pre { margin: 0; font: 400 12.5px/1.6 var(--font-mono); background: var(--paper); border: 1px solid var(--rule); padding: 0.8rem 1rem; white-space: pre-wrap; color: var(--ink); }
+.kit .mono { background: var(--paper); }
+body.v-handouts .kit { display: none; }
+@media (max-width: 700px) { .kit dl { grid-template-columns: 1fr; gap: 0.2rem 0; } .kit dt { margin-top: 0.6rem; } }
+
+/* restructure additions */
+.s-head .when { font: 500 12px/1 var(--font-head); color: var(--mute); letter-spacing: 0.02em; margin-left: 0.4rem; }
+.note { font-size: 13.5px; color: var(--mute); margin: 0 0 0.6rem; }
+.struct.sched td:nth-child(2) { white-space: nowrap; font-family: var(--font-head); font-weight: 500; color: var(--accent); }
+.struct.sched td:first-child { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.hs pre { margin: 0; font: 400 12.5px/1.6 var(--font-mono); background: var(--paper-2); border: 1px solid var(--rule); padding: 0.8rem 1rem; white-space: pre-wrap; }
+.hs .tbl + p { margin-top: 0.5rem; }
+
+/* --- print pack overrides --- */
+@page { size: Letter; margin: 0.45in 0.55in; }
+@media print {
+  .session, .handout { break-before: auto; }
+  .session { padding-top: 0; }
+  .strip { display: grid !important; }
+  .cover { padding-top: 0; }
+  .handout { border: 1px solid var(--rule); border-top: 6px solid var(--accent); padding: 0.8rem 1.1rem 1rem; }
+  .handout h3 { font-size: 19px; margin-bottom: 0.5rem; }
+  .h-top { margin-bottom: 0.8rem; padding-bottom: 0.4rem; }
+  .idea { font-size: 14px; margin-bottom: 0.8rem; line-height: 1.3; }
+  .idea .tag { margin-bottom: 0.15rem; }
+  .hs { margin-bottom: 0.55rem; }
+  .hs > .tag { margin-bottom: 0.3rem; }
+  .hs p, .hs ul, .hs ol { font-size: 11px; line-height: 1.4; }
+  .hs li { margin-bottom: 0.25rem; }
+  .hs.deep li { font-size: 10px; }
+  .hs pre { font-size: 9.5px; padding: 0.5rem 0.7rem; }
+  .grid { font-size: 10.5px; line-height: 1.3; }
+  .grid td { padding: 0.35rem 0.6rem 0.35rem 0; }
+  .grid td:first-child { font-size: 10px; }
+  .h-grid { gap: 1.2rem; }
+  .gw p { font-size: 13px; }
+  .tl p, .steps p { font-size: 12px; }
+  .steps .st { font-size: 12.5px; }
+  .kit dd { font-size: 12px; }
+  .kit pre { font-size: 10.5px; }
+  .watch { break-inside: avoid; grid-template-columns: 8rem 1fr !important; }
+  .h-grid { display: block !important; column-count: 2; column-gap: 1.4rem; }
+  .h-grid > div { display: contents; }
+  .hs { break-inside: auto; }
+  .grid tr, .hs li { break-inside: avoid; }
+  .hs > .tag { break-after: avoid; }
+  .handout { break-inside: auto; }
+  .gw { grid-template-columns: 1fr 1fr !important; margin-bottom: 1.4rem; }
+  .front-grid { grid-template-columns: 1fr 1fr !important; }
+  .s-head { grid-template-columns: 1fr auto !important; margin-bottom: 1.2rem; }
+  .s-head .mini { align-items: flex-end !important; }
+  .strip a { border-bottom: 0 !important; border-right: 1px solid var(--rule) !important; }
+  .strip a:last-child { border-right: 0 !important; }
+  .meta-band { grid-template-columns: repeat(4, 1fr) !important; }
+  .kit { margin-bottom: 1.4rem; }
+}
+.brandline { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.9rem; }
+.brandline svg { width: 34px; height: 34px; }
+.brandline span { font: 500 11px/1 var(--font-head); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); }
+</style></head><body><div class="wrap" style="padding-top:2rem">
+<div class="brandline"><svg viewBox="0 0 163.2 163.2" xmlns="http://www.w3.org/2000/svg" aria-label="RAND" role="img"><path fill="#751ddb" d="M120.6 0c-6.6 23-20.4 43.7-39.3 58.8C60.4 75.5 35.2 84.3 8.4 84.3c-2.7 0-5.5 0-8.4-.3v79.2h163.2V0h-42.6z"/><path fill="#fff" d="M82.9 106.4v33.9h3.7v-25.9l25.2 26.3h.7v-33.6h-3.7v25.4l-24.9-26.1z"/><path fill="#fff" fill-rule="evenodd" d="M125.8 140.3h6.1c5.2 0 9.2-.6 13.1-4.2 3.6-3.2 5.4-7.6 5.4-12.4 0-5-1.7-9.4-5.5-12.6-3.9-3.3-8-3.9-12.9-3.9h-6.2v33.1zm3.7-3.5v-26.3h2.7c3.9 0 7.2.5 10.3 3.2 2.8 2.5 4.3 6.1 4.3 10 0 3.7-1.4 7.2-4.1 9.7-3 2.8-6.4 3.4-10.4 3.4h-2.8z"/><path fill="#fff" fill-rule="evenodd" d="M67.3 130.8H53.1l-4 9.4H45l15-33.8h.7l14.6 33.9h-4.1l-3.9-9.5zm-1.5-3.4H54.6l5.7-13.3 5.5 13.3z"/><path fill="#fff" d="M21.6 125.8v14.5h-3.8v-33.2h7.5c2.8 0 5.8.1 8.2 1.7 2.5 1.7 3.8 4.6 3.8 7.6 0 2.7-1.2 5.4-3.2 7.1-1.4 1.2-3.2 1.7-4.9 2l10.4 14.7h-4.5l-12.4-17.9H26c4.1 0 7.6-1.2 7.6-6 0-5.4-4.3-5.8-8.7-5.8h-3.5l.2 15.3z"/><path fill="#751ddb" d="M79 56c18-14.4 31.2-34.1 37.8-56H0v80.3c2.9.3 5.7.3 8.4.3 25.9.1 50.3-8.5 70.6-24.6z"/><path fill="#fff" d="M81.3 58.8C100.2 43.7 114 23 120.6 0h-3.9C110.2 21.9 96.9 41.6 79 56 58.7 72.1 34.3 80.7 8.4 80.7c-2.7 0-5.5-.1-8.4-.3V84c3 .3 5.7.3 8.4.3 26.8 0 52-8.8 72.9-25.5z"/></svg><span>RAND AI Facilitation Group</span></div>
+<hr class="hairline">
+<h1 style="font-size:40px;margin:1.2rem 0 0.6rem">AI Facilitation Group Curriculum</h1>
+<p class="dek" style="margin-top:0">Six biweekly sessions from September to December, plus a January slot the group fills. Every session has a facilitation plan, a one-page takeaway guide for participants, and ready-made materials so the facilitator never has to source their own.</p>
+<div class="front" style="padding-top:1.5rem">
+<div class="block"><span class="tag">Start here</span>
+<ul>
+<li><a href="Full Curriculum.html">Full Curriculum.html</a>: the complete styled document, best read in a browser. Use the Handouts button at the top to see only the takeaway guides.</li>
+<li><a href="Full Curriculum.pdf">Full Curriculum.pdf</a>: the same document as one PDF.</li>
+<li><a href="00 Overview/Curriculum Overview.pdf">Curriculum Overview.pdf</a>: cover, schedule, working assumptions, standing structure, facilitation notes, and what changed from the first draft.</li>
+<li><a href="https://claude.ai/code/artifact/5cd8a4d4-81fb-4cf7-8bcc-8cbf50ed2f12">Live web version</a>: hosted copy of the page. Private until shared from its share menu.</li>
+<li><a href="Full Curriculum (source).md">Full Curriculum (source).md</a>: the plain-text source, for edits.</li>
+</ul></div>
+<div class="block"><span class="tag">Sessions</span>
+<div class="tbl"><table class="grid"><thead><tr><th>#</th><th>Session</th><th>For the facilitator</th><th>For participants</th><th>Materials</th><th>Web</th></tr></thead><tbody>
+<tr><td>1</td><td>Prompting as Spec-Writing, and Attribution<br><small>Sep 17 &amp; 18</small></td><td><a href="Session 01 - Prompting and Attribution/Facilitation Plan/Session 01 - Facilitation Plan.pdf">Facilitation plan</a></td> · <a href="Session 01 - Prompting and Attribution/Facilitation Plan/Session 01 - Opening Deck.pdf">Opening deck</a><td><a href="Session 01 - Prompting and Attribution/Takeaway Guide/Session 01 - Takeaway Guide.pdf">Takeaway guide</a></td><td><a href="Session 01 - Prompting and Attribution/Materials/Session 01 - Ready-made Materials.pdf">Materials</a> · <a href="Session 01 - Prompting and Attribution/Materials/Session 01 - Links.txt">Links</a></td><td><a href="Full Curriculum.html#s1">Web</a></td></tr><tr><td>2</td><td>Documents, Context Rot, and How Models Fail<br><small>Oct 1 &amp; 2</small></td><td><a href="Session 02 - Documents and Failure/Facilitation Plan/Session 02 - Facilitation Plan.pdf">Facilitation plan</a></td><td><a href="Session 02 - Documents and Failure/Takeaway Guide/Session 02 - Takeaway Guide.pdf">Takeaway guide</a></td><td><a href="Session 02 - Documents and Failure/Materials/Session 02 - Ready-made Materials.pdf">Materials</a> · <a href="Session 02 - Documents and Failure/Materials/Session 02 - Links.txt">Links</a></td><td><a href="Full Curriculum.html#s2">Web</a></td></tr><tr><td>2+</td><td>GitHub 101: Saving, Sharing, and Undoing Your Work<br><small>Oct 1 &amp; 2. Add-on requested by the group; 45 minutes, best on the second day.</small></td><td><a href="Session 02 Add-on - GitHub 101/Facilitation Plan/GitHub 101 - Facilitation Plan.pdf">Facilitation plan</a> · <a href="Session 02 Add-on - GitHub 101/Facilitation Plan/GitHub 101 - Facilitator Briefing.pdf">Facilitator briefing</a></td><td><a href="Session 02 Add-on - GitHub 101/Takeaway Guide/GitHub 101 - Takeaway Guide.pdf">Takeaway guide</a></td><td><a href="Session 02 Add-on - GitHub 101/Materials/GitHub 101 - Ready-made Materials.pdf">Materials</a> · <a href="Session 02 Add-on - GitHub 101/Materials/GitHub 101 - Links.txt">Links</a></td><td></td></tr><tr><td>3</td><td>Data Work, and Deterministic Code Over Model Arithmetic<br><small>Oct 15 &amp; 16</small></td><td><a href="Session 03 - Code Over Arithmetic/Facilitation Plan/Session 03 - Facilitation Plan.pdf">Facilitation plan</a></td><td><a href="Session 03 - Code Over Arithmetic/Takeaway Guide/Session 03 - Takeaway Guide.pdf">Takeaway guide</a></td><td><a href="Session 03 - Code Over Arithmetic/Materials/Session 03 - Ready-made Materials.pdf">Materials</a> · <a href="Session 03 - Code Over Arithmetic/Materials/Session 03 - Links.txt">Links</a></td><td><a href="Full Curriculum.html#s3">Web</a></td></tr><tr><td>4</td><td>Agents, Subagents, and Cost<br><small>Oct 29 &amp; 30</small></td><td><a href="Session 04 - Agents and Cost/Facilitation Plan/Session 04 - Facilitation Plan.pdf">Facilitation plan</a></td><td><a href="Session 04 - Agents and Cost/Takeaway Guide/Session 04 - Takeaway Guide.pdf">Takeaway guide</a></td><td><a href="Session 04 - Agents and Cost/Materials/Session 04 - Ready-made Materials.pdf">Materials</a> · <a href="Session 04 - Agents and Cost/Materials/Session 04 - Links.txt">Links</a></td><td><a href="Full Curriculum.html#s4">Web</a></td></tr><tr><td>5</td><td>Skill Docs, with Quals in View<br><small>Nov 12 &amp; 13</small></td><td><a href="Session 05 - Skill Docs and Quals/Facilitation Plan/Session 05 - Facilitation Plan.pdf">Facilitation plan</a></td><td><a href="Session 05 - Skill Docs and Quals/Takeaway Guide/Session 05 - Takeaway Guide.pdf">Takeaway guide</a></td><td><a href="Session 05 - Skill Docs and Quals/Materials/Session 05 - Ready-made Materials.pdf">Materials</a> · <a href="Session 05 - Skill Docs and Quals/Materials/Session 05 - Links.txt">Links</a></td><td><a href="Full Curriculum.html#s5">Web</a></td></tr><tr><td>6</td><td>Build Something, and the Critic in the Room<br><small>Dec 10 &amp; 11. This session can use both days: demos on the first, critique and the Playbook on the second.</small></td><td><a href="Session 06 - Build and Critique/Facilitation Plan/Session 06 - Facilitation Plan.pdf">Facilitation plan</a></td><td><a href="Session 06 - Build and Critique/Takeaway Guide/Session 06 - Takeaway Guide.pdf">Takeaway guide</a></td><td><a href="Session 06 - Build and Critique/Materials/Session 06 - Ready-made Materials.pdf">Materials</a> · <a href="Session 06 - Build and Critique/Materials/Session 06 - Links.txt">Links</a></td><td><a href="Full Curriculum.html#s6">Web</a></td></tr><tr><td>7</td><td>Topic the Group Picks<br><small>Jan 7 &amp; 8</small></td><td><a href="Session 07 - Group&#x27;s Pick/Facilitation Plan/Session 07 - Facilitation Plan.pdf">Facilitation plan</a></td><td></td><td></td><td><a href="Full Curriculum.html#s7">Web</a></td></tr>
+</tbody></table></div></div>
+</div></div></body></html>

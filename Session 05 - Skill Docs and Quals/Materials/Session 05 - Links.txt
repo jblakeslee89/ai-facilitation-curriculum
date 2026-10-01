@@ -1,0 +1,21 @@
+Session 5: Skill Docs, with Quals in View
+
+Go-deeper links from the takeaway guide:
+https://agentskills.io
+https://github.com/anthropics/skills
+https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
+https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
+
+Ready-made materials (plain text):
+Ready-made materialsUse these when nobody has their own. Everything here is public or was written for this course.Starter RAND analyst skill doc, for the room to edit# RAND analyst
+Use when: drafting any RAND memo, brief, or summary.
+Reader: a policy generalist with ten minutes.
+Format: headers no deeper than three levels. Page-cite every factual claim as (Author, p. X).
+Always: flag uncertainty. Separate what the source says from what you infer.
+Never: invent a statistic. Resolve a conflict between sources without flagging it.
+Lit review: extract claims to a table first, synthesize second.Starter qual study partner skill doc# Qual study partner
+Use when: I am studying for the qualifying exam.
+Sources: only the readings I attach. If the answer is not in them, say so.
+Mode: quiz me. One question at a time. Do not give the answer until I have attempted it.
+After each attempt: what I got right, what I missed, and the page in the reading that covers it.
+Never: invent a citation. Agree with a wrong answer. Summarize a reading I have not attached.Test taskThe Session 1 rewrite prompt on the GAO report, with and without the analyst skill loaded. Diff the two outputs. For the study partner: attach one qual reading and ask for five questions; check every page cite.

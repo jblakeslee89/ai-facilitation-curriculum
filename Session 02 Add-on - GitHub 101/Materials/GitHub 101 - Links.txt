@@ -1,0 +1,53 @@
+GitHub 101 (add-on to Session 2): Saving, Sharing, and Undoing Your Work
+
+Go-deeper links from the takeaway guide:
+https://skills.github.com
+https://docs.github.com/en/get-started
+https://desktop.github.com
+https://swcarpentry.github.io/git-novice/
+https://choosealicense.com
+https://dangitgit.com
+
+Also named in the facilitator briefing:
+https://github.com/jblakeslee89/llm-revealed-preferences
+https://github.com/RANDCorporation
+https://github.com/anthropics/skills
+https://education.github.com
+
+Ready-made materials (plain text):
+
+Use these when nobody has their own. Everything here is public or was written for this course.
+
+Note to send tonight: Tomorrow we'll spend 45 minutes on GitHub. Before we start, please make a free account at github.com with your personal email, verify the email, and turn on two-factor authentication when it asks. No installs needed; we'll work in the browser. If you already have an account, check that you can sign in.
+
+Demo repository: github.com/jblakeslee89/llm-revealed-preferences. Public. 74 commits, each with a one-line reason and a Co-Authored-By line naming the model. A .gitignore that keeps copyrighted PDFs (literature/) and the key file (.env) off GitHub, and a .env.example showing where a key goes without containing one.
+
+Practice repository: Name: ai-group-notes. Private. Tick "Add a README file." First file: prompts.md, holding one before/after prompt pair from Session 1. Session 3's scripts go in the same repository in two weeks.
+
+Starter README: 
+# ai-group-notes
+
+What this is: my notes and working files from the RAND AI Facilitation Group, fall 2026.
+What's here:
+- prompts.md: before/after prompt pairs (Session 1)
+- scripts/: analysis scripts written with the model (Session 3)
+- skills/: my skill docs (Session 5)
+What's not here: any RAND project data, keys, or copyrighted readings.
+
+Starter .gitignore for research work: 
+# keys and settings
+.env
+# data and readings stay local
+data/raw/
+literature/
+*.pdf
+# clutter
+.DS_Store
+__pycache__/
+~$*
+
+Good and bad commit messages: Bad: update, fixes, asdf. Good: Drop 2019 rows counted twice in the merge, Add Session 1 prompt pair on the GAO summary. One line, starts with a verb, says what changed and, if it isn't obvious, why.
+
+Git-tutor prompt: I'm new to Git and GitHub. Here is exactly what I did and the error I got: [paste]. Explain what happened in plain language, then give me the smallest safe fix. Do not suggest force-push, reset --hard, or deleting the repository.
+
+Something to break on purpose: In the practice repository, edit the same line of the README on two branches, then try to merge both. GitHub shows a merge conflict and a web editor to resolve it. Better to meet one here than in a thesis chapter.
